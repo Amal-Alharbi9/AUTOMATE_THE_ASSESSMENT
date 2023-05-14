@@ -17,5 +17,7 @@ The teacher collects the grades of the students and evaluates them based on thei
 
 ## One of the pictures shows the As Is process (manual process before the automated) and the other shows the To Be process (process after the automated)
 
-"C:\Users\hp\Git_Projects\Automate the assessment\Page 1.png"
-"C:\Users\hp\Git_Projects\Automate the assessment\Page 2.png"
+
+![Page 1](https://github.com/Amal-Alharbi9/AUTOMATE_THE_ASSESSMENT/assets/98851680/34fcd3f6-3062-4f9f-9891-f6d6ecb5f5f6)
+
+![Page 2](https://github.com/Amal-Alharbi9/AUTOMATE_THE_ASSESSMENT/assets/98851680/40af504e-2cd2-4f10-85da-e46bbf298efd)
