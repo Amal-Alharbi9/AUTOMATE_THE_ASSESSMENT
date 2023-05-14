@@ -1,0 +1,981 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="SkillForLife" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="ReportDT" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="skillList" Type="InArgument(scg:IEnumerable(ui:UiElement))" />
+    <x:Property Name="strskills" Type="InArgument(x:String)" />
+    <x:Property Name="check" Type="InOutArgument(x:Boolean)" />
+  </x:Members>
+  <this:SkillForLife.ReportDT>
+    <InArgument x:TypeArguments="sd:DataTable" />
+  </this:SkillForLife.ReportDT>
+  <this:SkillForLife.skillList>
+    <InArgument x:TypeArguments="scg:IEnumerable(ui:UiElement)" />
+  </this:SkillForLife.skillList>
+  <this:SkillForLife.strskills>
+    <InArgument x:TypeArguments="x:String" />
+  </this:SkillForLife.strskills>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1177.3333333333333,3731.3333333333335</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>SkillForLife_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="86">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="SkillForLife" sap:VirtualizedContainerService.HintSize="1187.3333333333333,3666.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Sequence DisplayName="Get all skills from website and store in Report excel file" sap:VirtualizedContainerService.HintSize="1125.3333333333333,3556" sap2010:WorkflowViewState.IdRef="Sequence_27">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="x:Object" Name="Frow" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:BuildDataTable DataTable="[ReportDT]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="1063.3333333333333,60" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;اسم_x0020_الطالبه&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;المهارة&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;حالة_x0020_التقببم&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+      <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: EduWave - إدخال نتائج الطالبات على مستوى المادة والمهارة :: نظام نور" sap:VirtualizedContainerService.HintSize="1063.3333333333333,3345.3333333333335" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="cf02e594-b5b8-4007-9a9c-1d7a996c644d" Version="V2">
+        <uix:NApplicationCard.Body>
+          <ActivityAction x:TypeArguments="x:Object">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1029.3333333333333,3126.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_26">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Sequence sap:VirtualizedContainerService.HintSize="579.3333333333334,2923.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <uix:NClick ClickType="Single" DisplayName="Click 'المهارة'" sap:VirtualizedContainerService.HintSize="517.3333333333334,53.333333333333336" sap2010:WorkflowViewState.IdRef="NClick_7" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="cf02e594-b5b8-4007-9a9c-1d7a996c644d" Version="V3">
+                  <uix:NClick.Target>
+                    <uix:TargetAnchorable BrowserURL="https://noor.moe.gov.sa/Noor/EduWaveSMS/TeacherMarksMenu.aspx?EKME-sZ-qgdJhYZtXdsecQ2=L7K9wbaeZ-U1" DesignTimeRectangle="879, 753, 30, 35" DesignTimeScaleFactor="1.5" FriendlyName="'SPAN'" FullSelectorArgument="&lt;webctrl aria-role='presentation' css-selector='body&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;span&amp;gt;span&amp;gt;span&amp;gt;span' idx='6' tag='SPAN' /&gt;" FuzzyAccuracy="0.99" FuzzySelectorArgument="&lt;webctrl aria-role='presentation' type='' class='select2-selection__arrow' tag='SPAN' aaname='' /&gt;" Guid="72bd649b-72c0-416d-9f1d-5033b0152862" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACIAAAAnCAYAAABqippxAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAACvSURBVFhH7dLBCQMhEIXhlK8VWIA3TzZgAzZgAxZgBU4YD7KZ7CGjAffwPhgQFfZn8UUPMUJCCMdnhpyGEAkhEkIkhEgIkRAiqUJSSmSM+Wn4rob6j8QYbz98Hb6jpQ7pvZP3/jaAh8/4jtbSG2mtkXPuK4L3+GzF8mOttZK1dkbwmvdWLYewUsoM4fWOrRCWcx6zazvkXxAiIURCiIQQCSHSDDk9I+QJECIh5BPRG4rYCURSnSU7AAAAAElFTkSuQmCC" InformativeScreenshot="499584be14a7356ca7243dbcbb3cc61d.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='EduWave - إدخال نتائج الطالبات على مستوى المادة والمهارة :: نظام نور' /&gt;" SearchSteps="FuzzySelector, Image" Version="V1" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="1350, 752, 150, 26" ElementType="Text" FriendlyName="'المهارة'" FullSelectorArgument="&lt;webctrl aaname='المهارة' class='StandardFont' tag='SPAN' /&gt;" FuzzyAccuracy="0.98" FuzzySelectorArgument="&lt;webctrl aaname='المهارة' class='StandardFont' tag='SPAN' type='' check:text='المهارة' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAJoAAAAeCAYAAADU3gfZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAQ/SURBVHhe7ZnRa9tWFIf3T3oLgoAJeJSZgpZh4UV4sxiYPOghpVAHZsJwHryHqVARggfxwLgUF4yGp3SpTVBZEQSZgsAIAiLw25V0ZcmL4zotaBGcDw7Y11e6gvv5nHPtL0AQGUCiEZlAohGZQKIRmUCiEZlAohGZQKLlFNdooVQooLDThOHywczwMPlVRIGtL+z34Nzw0fHdz0Si/V/4LoxjGcWijPbIgvmigdK2iGbfhs+nrINEIzZjbqD1iG0K25jifhtNMXotNNjGbWDax0TzP9iwzg30TnXoJzq6fQMT29tI4o9DouWHGxfmcxVSVYU+tjE5a0KuKGi/dj4vo7H7Dp+WQglWhVBponvhfqZwJFoO8eHaFqx3Djy+YZtwd0bzYZ8qoQSligylrkRRk1AM5ochojXaTOjVkGg5ggk21qE+jjefhSCh1bduCzcbQC0GcyRol5Eea0vntQdvlUVzC72n5WitR+y6D3w8hffeQPdIhVIto7wro3GoYfjO45/GkGi5wRt3IAWbEoaAohC/LkL9/T8HgnuK5s9M6M/YQYPfv1Rj5fKcl8u5iXbYDwpQ+044P8KH86qJMr9mOSS0lxYh0fKBZ0HbizaxdNAD69GDQVhnaiRHUUXvKqXaPUTzrwZo8kPGckjoXLCFbjyYx5EkpZ+NJHv6Nro/CdH4fgeD8QQTo4dWhV+/p8FaJDYSLRd40w7EYEMEBd33KaG8CTrhxgpQ0lltU9ECiX7hpXGnAe2VCfOlhkYpuJYJdGjAvUl6uLQk7IZohvNEdKbJM3kX/Fm30s9KouUC5+WTKHM9bsOc88EAdmIcHBTDDSwfpbLNpqJdW9B5ppRPYlETsQrVICuxEnnWgMDepyXxr3pobC+vEZCMBwLGKY1EywVOn5fIFaINuWhLZe0TREtnRHfUjOZW7hYtyWgltIyk+fcutaiXpIyWPxalk2WJ9jjZVMyGi/5KOf3E0sn7r0K1A5OPL+auEy3Vo0m/WdHavoPhIS/FrG8cLPpGEi0fXNvQ69GmBhlEPmijc6RCCmVisd1Y7t3Wicb6ObGmoFbdxW61Bnk3yojxvaW6AlmM1ypCYnOl+LCwVYb84w/4/lsR0t4exHj9YLwuQ9zh7+P46muUvynjuxqbyz8j0R44/tUwOdGlQ5Bu/zuwVrQ4vky9vm+suXZLhHrcwZNKLOtykGh5gJU6+2KI7okO/UUXvdcTOKlKuiAWbUuGHmc6z4F1aWEynYQx/XOI0V/Txfv7xJvREOO3t8etSxvudbQc+2rA/ecNRkM29+94jgUr/f/p3IZpGDDOLbhL3xQSLRcEPV3YkLOSmvRJ+YJEe6D4MwMaK1na86Bs8VJV12EvMky+INEeJKnfvuLYlqGdr6qr+YBEe6D4rN8x/tDRPmIn0pMezFk+S2YMiUZkAolGZAKJRmQCiUZkAolGZADwL8v3MbPdSAh0AAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NClick.Target>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </uix:NClick>
+                <ui:UiElementExists DisplayName="Element Exists 'UL  select2-ctl00_Place...'" Exists="[check]" sap:VirtualizedContainerService.HintSize="517.3333333333334,107.33333333333333" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+                  <ui:UiElementExists.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="45bdd8f2-ab88-4e69-ae88-e43cfd87c3c8" InformativeScreenshot="0c6370b7062204aaa4dadeda4ef86552" Selector="&lt;webctrl aria-role='tree' tag='UL' /&gt;">
+                      <ui:Target.TimeoutMS>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:Target.TimeoutMS>
+                      <ui:Target.WaitForReady>
+                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                      </ui:Target.WaitForReady>
+                    </ui:Target>
+                  </ui:UiElementExists.Target>
+                </ui:UiElementExists>
+                <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="517.3333333333334,1356.6666666666667" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+                  <TryCatch.Try>
+                    <If Condition="[check]" sap:VirtualizedContainerService.HintSize="478.6666666666667,1120.6666666666667" sap2010:WorkflowViewState.IdRef="If_3">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <If.Then>
+                        <Sequence sap:VirtualizedContainerService.HintSize="400,295.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="338,91.33333333333333" sap2010:WorkflowViewState.IdRef="WriteLine_5" Text="continue" />
+                          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="338,53.333333333333336" sap2010:WorkflowViewState.IdRef="CommentOut_12">
+                            <ui:CommentOut.Body>
+                              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,257.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <uix:NClick ClickType="Single" DisplayName="Click 'المهارة'" sap:VirtualizedContainerService.HintSize="338,53.333333333333336" sap2010:WorkflowViewState.IdRef="NClick_4" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="cf02e594-b5b8-4007-9a9c-1d7a996c644d" Version="V3">
+                                  <uix:NClick.Target>
+                                    <uix:TargetAnchorable BrowserURL="https://noor.moe.gov.sa/Noor/EduWaveSMS/TeacherMarksMenu.aspx?EKME-sZ-qgdJhYZtXdsecQ2=L7K9wbaeZ-U1" DesignTimeRectangle="879, 599, 30, 35" DesignTimeScaleFactor="1.5" FriendlyName="'SPAN'" FullSelectorArgument="&lt;webctrl aria-role='presentation' css-selector='body&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;span&amp;gt;span&amp;gt;span&amp;gt;span' idx='6' tag='SPAN' /&gt;" FuzzyAccuracy="0.98" FuzzySelectorArgument="&lt;webctrl aria-role='presentation' type='' class='select2-selection__arrow' tag='SPAN' aaname='' /&gt;" Guid="ed691db6-d399-42cf-8373-33159447e637" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACIAAAAnCAYAAABqippxAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAACvSURBVFhH7dLBCQMhEIXhlO9WYAHePNmADdiADViAFThh9iDhZQ9RA3p4PwyICvux+JJDOgvivd8+HbI7QjBCMEIwQjBCMEKwIUiMUYwxP43eHWn4j4QQHj/8OXpntGFIa02cc48AHT3TO6NNvZFaq1hrvxC6p2czTT/WUopc19URuta92aYhWs65Q3S90hJESynds9oy5F8RghGCEYIRghGCdcjuuSEnRAh2CETkDZzuCUTg63pNAAAAAElFTkSuQmCC" InformativeScreenshot="7d5523e4c9b3eca57f6d9dc731cfae86.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='EduWave - إدخال نتائج الطالبات على مستوى المادة والمهارة :: نظام نور' /&gt;" SearchSteps="FuzzySelector, Image" Version="V1" Visibility="Interactive">
+                                      <uix:TargetAnchorable.Anchors>
+                                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                          <uix:Target DesignTimeRectangle="1350, 598, 150, 26" ElementType="Text" FriendlyName="'المهارة'" FullSelectorArgument="&lt;webctrl aaname='المهارة' class='StandardFont' tag='SPAN' /&gt;" FuzzyAccuracy="0.98" FuzzySelectorArgument="&lt;webctrl aaname='المهارة' class='StandardFont' tag='SPAN' type='' check:innerText='المهارة' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAJoAAAAeCAYAAADU3gfZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAQ/SURBVHhe7ZnRa9tWFIf3T3oLgoAJeJSZgpZh4UV4sxiYPOghpVAHZsJwHryHqVARggfxwLgUF4yGp3SpTVBZEQSZgsAIAiLw25V0ZcmL4zotaBGcDw7Y11e6gvv5nHPtL0AQGUCiEZlAohGZQKIRmUCiEZlAohGZQKIRmUCi5RTXaKFUKKCw04Th8sHM8DD5VUSBrS/s9+Dc8NHx3c9Eov1f+C6MYxnFooz2yIL5ooHStohm34bPp6yDRCM2Y26g9YhtCtuY4n4bTTF6LTTYxm1g2sdE8z/YsM4N9E516Cc6un0DE9vbSOKPQ6LlhxsX5nMVUlWFPrYxOWtCrihov3Y+L6Ox+w6flkIJVoVQaaJ74X6mcCRaDvHh2hasdw48vmGbcHdG82GfKqEEpYoMpa5EUZNQDOaHIaI12kzo1ZBoOYIJNtahPo43n4UgodW3bgs3G0AtBnMkaJeRHmtL57UHb5VFcwu9p+VorUfsug98PIX33kD3SIVSLaO8K6NxqGH4zuOfxpBoucEbdyAFmxKGgKIQvy5C/f0/B4J7iubPTOjP2EGD379UY+XynJfLuYl22A8KUPtOOD/Ch/OqiTK/ZjkktJcWIdHygWdB24s2sXTQA+vRg0FYZ2okR1FF7yql2j1E868GaPJDxnJI6FywhW48mMeRJKWfjSR7+ja6PwnR+H4Hg/EEE6OHVoVfv6fBWiQ2Ei0XeNMOxGBDBAXd9ymhvAk64cYKUNJZbVPRAol+4aVxpwHtlQnzpYZGKbiWCXRowL1Jeri0JOyGaIbzRHSmyTN5F/xZt9LPSqLlAuflkyhzPW7DnPPBAHZiHBwUww0sH6WyzaaiXVvQeaaUT2JRE7EK1SArsRJ51oDA3qcl8a96aGwvrxGQjAcCximNRMsFTp+XyBWiDbloS2XtE0RLZ0R31IzmVu4WLcloJbSMpPn3LrWol6SMlj8WpZNlifY42VTMhov+Sjn9xNLJ+69CtQOTjy/mrhMt1aNJv1nR2r6D4SEvxaxvHCz6RhItH1zb0OvRpgYZRD5oo3OkQgplYrHdWO7d1onG+jmxpqBW3cVutQZ5N8qI8b2lugJZjNcqQmJzpfiwsFWG/OMP+P5bEdLeHsR4/WC8LkPc4e/j+OprlL8p47sam8s/I9EeOP7VMDnRpUOQbv87sFa0OL5Mvb5vrLl2S4R63MGTSizrcpBoeYCVOvtiiO6JDv1FF73XEzipSrogFm1Lhh5nOs+BdWlhMp2EMf1ziNFf08X7+8Sb0RDjt7fHrUsb7nW0HPtqwP3nDUZDNvfveI4FK/3/6dyGaRgwzi24S98UEi0XBD1d2JCzkpr0SfmCRHug+DMDGitZ2vOgbPFSVddhLzJMviDRHiSp377i2Jahna+qq/mARHug+KzfMf7Q0T5iJ9KTHsxZPktmDIlGZAKJRmQCiUZkAolGZADwL9tlMbPlRnvvAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" />
+                                        </scg:List>
+                                      </uix:TargetAnchorable.Anchors>
+                                    </uix:TargetAnchorable>
+                                  </uix:NClick.Target>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </uix:NClick>
+                                <ui:FindChildren Children="[skillList]" DisplayName="Find Children 'UL  select2-ctl00_Place...'" Filter="&lt;webctrl /&gt;" sap:VirtualizedContainerService.HintSize="338,53.333333333333336" sap2010:WorkflowViewState.IdRef="FindChildren_1" Scope="FIND_CHILDREN">
+                                  <ui:FindChildren.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c3ff6f7e-7189-439a-9693-e30de3e40026" InformativeScreenshot="cd1df0f5a263681bce7725a7ad5174e4" Selector="&lt;webctrl aria-role='tree' tag='UL' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:FindChildren.Target>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:FindChildren>
+                              </Sequence>
+                            </ui:CommentOut.Body>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:CommentOut>
+                        </Sequence>
+                      </If.Then>
+                      <If.Else>
+                        <Sequence sap:VirtualizedContainerService.HintSize="400,644.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Warn" Message="[&quot;Element not found&quot;+check.ToString]" />
+                          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="338,53.333333333333336" sap2010:WorkflowViewState.IdRef="CommentOut_13">
+                            <ui:CommentOut.Body>
+                              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,164" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:AnchorBase AnchorPosition="Auto" DisplayName="Anchor Base" sap:VirtualizedContainerService.HintSize="338,53.333333333333336" sap2010:WorkflowViewState.IdRef="AnchorBase_1">
+                                  <ui:AnchorBase.Action>
+                                    <ActivityAction x:TypeArguments="ui:Anchor">
+                                      <ActivityAction.Argument>
+                                        <DelegateInArgument x:TypeArguments="ui:Anchor" Name="ContextAnchor" />
+                                      </ActivityAction.Argument>
+                                      <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'SPAN'" sap:VirtualizedContainerService.HintSize="334,107.33333333333333" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                        <ui:Click.CursorPosition>
+                                          <ui:CursorPosition Position="Center">
+                                            <ui:CursorPosition.OffsetX>
+                                              <InArgument x:TypeArguments="x:Int32" />
+                                            </ui:CursorPosition.OffsetX>
+                                            <ui:CursorPosition.OffsetY>
+                                              <InArgument x:TypeArguments="x:Int32" />
+                                            </ui:CursorPosition.OffsetY>
+                                          </ui:CursorPosition>
+                                        </ui:Click.CursorPosition>
+                                        <ui:Click.Target>
+                                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8f6b85d5-4c5b-4928-b0b7-faee58b49849" InformativeScreenshot="b2b978017df8b452ef57556c3dd03318" Selector="&lt;webctrl aria-role='presentation' css-selector='body&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;span&amp;gt;span&amp;gt;span&amp;gt;span' tag='SPAN' idx='6' /&gt;">
+                                            <ui:Target.TimeoutMS>
+                                              <InArgument x:TypeArguments="x:Int32" />
+                                            </ui:Target.TimeoutMS>
+                                            <ui:Target.WaitForReady>
+                                              <InArgument x:TypeArguments="ui:WaitForReady" />
+                                            </ui:Target.WaitForReady>
+                                          </ui:Target>
+                                        </ui:Click.Target>
+                                      </ui:Click>
+                                    </ActivityAction>
+                                  </ui:AnchorBase.Action>
+                                  <ui:AnchorBase.AnchorProvider>
+                                    <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element 'SPAN  ctl00_PlaceHolder...'" sap:VirtualizedContainerService.HintSize="334,107.33333333333333" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_1">
+                                      <ui:WaitUiElementAppear.Target>
+                                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4c2a7915-8721-4b63-a360-d1d16559c070" InformativeScreenshot="9ede148f3f9e3e8588e0f96f15dbfa6e" Selector="&lt;webctrl aaname='المهارة' class='StandardFont' tag='SPAN' /&gt;">
+                                          <ui:Target.TimeoutMS>
+                                            <InArgument x:TypeArguments="x:Int32" />
+                                          </ui:Target.TimeoutMS>
+                                          <ui:Target.WaitForReady>
+                                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                                          </ui:Target.WaitForReady>
+                                        </ui:Target>
+                                      </ui:WaitUiElementAppear.Target>
+                                    </ui:WaitUiElementAppear>
+                                  </ui:AnchorBase.AnchorProvider>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:AnchorBase>
+                              </Sequence>
+                            </ui:CommentOut.Body>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:CommentOut>
+                          <uix:NClick ClickType="Single" DisplayName="Click 'المهارة'" sap:VirtualizedContainerService.HintSize="338,158.66666666666666" sap2010:WorkflowViewState.IdRef="NClick_8" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="cf02e594-b5b8-4007-9a9c-1d7a996c644d" Version="V3">
+                            <uix:NClick.Target>
+                              <uix:TargetAnchorable BrowserURL="https://noor.moe.gov.sa/Noor/EduWaveSMS/TeacherMarksMenu.aspx?EKME-sZ-qgdJhYZtXdsecQ2=L7K9wbaeZ-U1" DesignTimeRectangle="879, 807, 30, 35" DesignTimeScaleFactor="1.5" FriendlyName="'SPAN'" FullSelectorArgument="&lt;webctrl aria-role='presentation' css-selector='body&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;span&amp;gt;span&amp;gt;span&amp;gt;span' tag='SPAN' parentid='ctl00_PlaceHolderMain_UpdatePanel1' idx='5' /&gt;" FuzzyAccuracy="1" FuzzySelectorArgument="&lt;webctrl aria-role='presentation' type='' tag='SPAN' parentid='ctl00_PlaceHolderMain_UpdatePanel1' class='select2-selection__arrow' aaname='' /&gt;" Guid="dfaeb29d-89ae-460a-a19d-9fae8006f561" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACIAAAAnCAYAAABqippxAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAACvSURBVFhH7dLBCQMhEIXhlK8VWIA3TzZgAzZgAxZgBU4YD7KZ7CGjAffwPhgQFfZn8UUPMUJCCMdnhpyGEAkhEkIkhEgIkRAiqUJSSmSM+Wn4rob6j8QYbz98Hb6jpQ7pvZP3/jaAh8/4jtbSG2mtkXPuK4L3+GzF8mOttZK1dkbwmvdWLYewUsoM4fWOrRCWcx6zazvkXxAiIURCiIQQCSHSDDk9I+QJECIh5BPRG4rYCURSnSU7AAAAAElFTkSuQmCC" InformativeScreenshot="8a5f2217d755877614ec5e9e15fe69f4.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='EduWave - إدخال نتائج الطالبات على مستوى المادة والمهارة :: نظام نور' /&gt;" SearchSteps="FuzzySelector, Image" Version="V1" Visibility="Interactive">
+                                <uix:TargetAnchorable.Anchors>
+                                  <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                                    <uix:Target DesignTimeRectangle="1350, 806, 150, 26" ElementType="Text" FriendlyName="'المهارة'" FullSelectorArgument="&lt;webctrl aaname='المهارة' class='StandardFont' tag='SPAN' /&gt;" FuzzyAccuracy="0.99" FuzzySelectorArgument="&lt;webctrl aaname='المهارة' class='StandardFont' tag='SPAN' type='' check:innerText='المهارة' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAJoAAAAeCAYAAADU3gfZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAQ/SURBVHhe7ZnRa9tWFIf3T3oLgoAJeJSZgpZh4UV4sxiYPOghpVAHZsJwHryHqVARggfxwLgUF4yGp3SpTVBZEQSZgsAIAiLw25V0ZcmL4zotaBGcDw7Y11e6gvv5nHPtL0AQGUCiEZlAohGZQKIRmUCiEZlAohGZQKLlFNdooVQooLDThOHywczwMPlVRIGtL+z34Nzw0fHdz0Si/V/4LoxjGcWijPbIgvmigdK2iGbfhs+nrINEIzZjbqD1iG0K25jifhtNMXotNNjGbWDax0TzP9iwzg30TnXoJzq6fQMT29tI4o9DouWHGxfmcxVSVYU+tjE5a0KuKGi/dj4vo7H7Dp+WQglWhVBponvhfqZwJFoO8eHaFqx3Djy+YZtwd0bzYZ8qoQSligylrkRRk1AM5ochojXaTOjVkGg5ggk21qE+jjefhSCh1bduCzcbQC0GcyRol5Eea0vntQdvlUVzC72n5WitR+y6D3w8hffeQPdIhVIto7wro3GoYfjO45/GkGi5wRt3IAWbEoaAohC/LkL9/T8HgnuK5s9M6M/YQYPfv1Rj5fKcl8u5iXbYDwpQ+044P8KH86qJMr9mOSS0lxYh0fKBZ0HbizaxdNAD69GDQVhnaiRHUUXvKqXaPUTzrwZo8kPGckjoXLCFbjyYx5EkpZ+NJHv6Nro/CdH4fgeD8QQTo4dWhV+/p8FaJDYSLRd40w7EYEMEBd33KaG8CTrhxgpQ0lltU9ECiX7hpXGnAe2VCfOlhkYpuJYJdGjAvUl6uLQk7IZohvNEdKbJM3kX/Fm30s9KouUC5+WTKHM9bsOc88EAdmIcHBTDDSwfpbLNpqJdW9B5ppRPYlETsQrVICuxEnnWgMDepyXxr3pobC+vEZCMBwLGKY1EywVOn5fIFaINuWhLZe0TREtnRHfUjOZW7hYtyWgltIyk+fcutaiXpIyWPxalk2WJ9jjZVMyGi/5KOf3E0sn7r0K1A5OPL+auEy3Vo0m/WdHavoPhIS/FrG8cLPpGEi0fXNvQ69GmBhlEPmijc6RCCmVisd1Y7t3Wicb6ObGmoFbdxW61Bnk3yojxvaW6AlmM1ypCYnOl+LCwVYb84w/4/lsR0t4exHj9YLwuQ9zh7+P46muUvynjuxqbyz8j0R44/tUwOdGlQ5Bu/zuwVrQ4vky9vm+suXZLhHrcwZNKLOtykGh5gJU6+2KI7okO/UUXvdcTOKlKuiAWbUuGHmc6z4F1aWEynYQx/XOI0V/Txfv7xJvREOO3t8etSxvudbQc+2rA/ecNRkM29+94jgUr/f/p3IZpGDDOLbhL3xQSLRcEPV3YkLOSmvRJ+YJEe6D4MwMaK1na86Bs8VJV12EvMky+INEeJKnfvuLYlqGdr6qr+YBEe6D4rN8x/tDRPmIn0pMezFk+S2YMiUZkAolGZAKJRmQCiUZkAolGZADwL8v3MbPdSAh0AAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" />
+                                  </scg:List>
+                                </uix:TargetAnchorable.Anchors>
+                              </uix:TargetAnchorable>
+                            </uix:NClick.Target>
+                          </uix:NClick>
+                          <ui:FindChildren Children="[skillList]" DisplayName="Find Children 'UL  select2-ctl00_Place...'" Filter="&lt;webctrl /&gt;" sap:VirtualizedContainerService.HintSize="338,107.33333333333333" sap2010:WorkflowViewState.IdRef="FindChildren_4" Scope="FIND_CHILDREN">
+                            <ui:FindChildren.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c3ff6f7e-7189-439a-9693-e30de3e40026" InformativeScreenshot="cd1df0f5a263681bce7725a7ad5174e4" Selector="&lt;webctrl aria-role='tree' tag='UL' /&gt;">
+                                <ui:Target.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:Target.TimeoutMS>
+                                <ui:Target.WaitForReady>
+                                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                                </ui:Target.WaitForReady>
+                              </ui:Target>
+                            </ui:FindChildren.Target>
+                          </ui:FindChildren>
+                        </Sequence>
+                      </If.Else>
+                    </If>
+                  </TryCatch.Try>
+                  <TryCatch.Catches>
+                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="483.3333333333333,21.333333333333332" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ActivityAction x:TypeArguments="s:Exception">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                        </ActivityAction.Argument>
+                        <Sequence sap:VirtualizedContainerService.HintSize="400,83.33333333333333" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Warn" Message="[exception.Source+&quot;the reson is: &quot;+ exception.Message]" />
+                          <uix:NClick ClickType="Single" DisplayName="Click 'المهارة'" sap:VirtualizedContainerService.HintSize="338,53.333333333333336" sap2010:WorkflowViewState.IdRef="NClick_6" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="cf02e594-b5b8-4007-9a9c-1d7a996c644d" Version="V3">
+                            <uix:NClick.Target>
+                              <uix:TargetAnchorable BrowserURL="https://noor.moe.gov.sa/Noor/EduWaveSMS/TeacherMarksMenu.aspx?EKME-sZ-qgdJhYZtXdsecQ2=L7K9wbaeZ-U1" DesignTimeRectangle="879, 599, 30, 35" DesignTimeScaleFactor="1.5" FriendlyName="'SPAN'" FullSelectorArgument="&lt;webctrl aria-role='presentation' css-selector='body&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;span&amp;gt;span&amp;gt;span&amp;gt;span' idx='6' tag='SPAN' /&gt;" FuzzyAccuracy="0.98" FuzzySelectorArgument="&lt;webctrl aria-role='presentation' type='' class='select2-selection__arrow' tag='SPAN' aaname='' /&gt;" Guid="ed691db6-d399-42cf-8373-33159447e637" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACIAAAAnCAYAAABqippxAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAACvSURBVFhH7dLBCQMhEIXhlO9WYAHePNmADdiADViAFThh9iDhZQ9RA3p4PwyICvux+JJDOgvivd8+HbI7QjBCMEIwQjBCMEKwIUiMUYwxP43eHWn4j4QQHj/8OXpntGFIa02cc48AHT3TO6NNvZFaq1hrvxC6p2czTT/WUopc19URuta92aYhWs65Q3S90hJESynds9oy5F8RghGCEYIRghGCdcjuuSEnRAh2CETkDZzuCUTg63pNAAAAAElFTkSuQmCC" InformativeScreenshot="7d5523e4c9b3eca57f6d9dc731cfae86.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='EduWave - إدخال نتائج الطالبات على مستوى المادة والمهارة :: نظام نور' /&gt;" SearchSteps="FuzzySelector, Image" Version="V1" Visibility="Interactive">
+                                <uix:TargetAnchorable.Anchors>
+                                  <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                    <uix:Target DesignTimeRectangle="1350, 598, 150, 26" ElementType="Text" FriendlyName="'المهارة'" FullSelectorArgument="&lt;webctrl aaname='المهارة' class='StandardFont' tag='SPAN' /&gt;" FuzzyAccuracy="0.98" FuzzySelectorArgument="&lt;webctrl aaname='المهارة' class='StandardFont' tag='SPAN' type='' check:innerText='المهارة' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAJoAAAAeCAYAAADU3gfZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAQ/SURBVHhe7ZnRa9tWFIf3T3oLgoAJeJSZgpZh4UV4sxiYPOghpVAHZsJwHryHqVARggfxwLgUF4yGp3SpTVBZEQSZgsAIAiLw25V0ZcmL4zotaBGcDw7Y11e6gvv5nHPtL0AQGUCiEZlAohGZQKIRmUCiEZlAohGZQKIRmUCi5RTXaKFUKKCw04Th8sHM8DD5VUSBrS/s9+Dc8NHx3c9Eov1f+C6MYxnFooz2yIL5ooHStohm34bPp6yDRCM2Y26g9YhtCtuY4n4bTTF6LTTYxm1g2sdE8z/YsM4N9E516Cc6un0DE9vbSOKPQ6LlhxsX5nMVUlWFPrYxOWtCrihov3Y+L6Ox+w6flkIJVoVQaaJ74X6mcCRaDvHh2hasdw48vmGbcHdG82GfKqEEpYoMpa5EUZNQDOaHIaI12kzo1ZBoOYIJNtahPo43n4UgodW3bgs3G0AtBnMkaJeRHmtL57UHb5VFcwu9p+VorUfsug98PIX33kD3SIVSLaO8K6NxqGH4zuOfxpBoucEbdyAFmxKGgKIQvy5C/f0/B4J7iubPTOjP2EGD379UY+XynJfLuYl22A8KUPtOOD/Ch/OqiTK/ZjkktJcWIdHygWdB24s2sXTQA+vRg0FYZ2okR1FF7yql2j1E868GaPJDxnJI6FywhW48mMeRJKWfjSR7+ja6PwnR+H4Hg/EEE6OHVoVfv6fBWiQ2Ei0XeNMOxGBDBAXd9ymhvAk64cYKUNJZbVPRAol+4aVxpwHtlQnzpYZGKbiWCXRowL1Jeri0JOyGaIbzRHSmyTN5F/xZt9LPSqLlAuflkyhzPW7DnPPBAHZiHBwUww0sH6WyzaaiXVvQeaaUT2JRE7EK1SArsRJ51oDA3qcl8a96aGwvrxGQjAcCximNRMsFTp+XyBWiDbloS2XtE0RLZ0R31IzmVu4WLcloJbSMpPn3LrWol6SMlj8WpZNlifY42VTMhov+Sjn9xNLJ+69CtQOTjy/mrhMt1aNJv1nR2r6D4SEvxaxvHCz6RhItH1zb0OvRpgYZRD5oo3OkQgplYrHdWO7d1onG+jmxpqBW3cVutQZ5N8qI8b2lugJZjNcqQmJzpfiwsFWG/OMP+P5bEdLeHsR4/WC8LkPc4e/j+OprlL8p47sam8s/I9EeOP7VMDnRpUOQbv87sFa0OL5Mvb5vrLl2S4R63MGTSizrcpBoeYCVOvtiiO6JDv1FF73XEzipSrogFm1Lhh5nOs+BdWlhMp2EMf1ziNFf08X7+8Sb0RDjt7fHrUsb7nW0HPtqwP3nDUZDNvfveI4FK/3/6dyGaRgwzi24S98UEi0XBD1d2JCzkpr0SfmCRHug+DMDGitZ2vOgbPFSVddhLzJMviDRHiSp377i2Jahna+qq/mARHug+KzfMf7Q0T5iJ9KTHsxZPktmDIlGZAKJRmQCiUZkAolGZADwL9tlMbPlRnvvAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" />
+                                  </scg:List>
+                                </uix:TargetAnchorable.Anchors>
+                              </uix:TargetAnchorable>
+                            </uix:NClick.Target>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </uix:NClick>
+                          <ui:FindChildren Children="[skillList]" DisplayName="Find Children 'UL  select2-ctl00_Place...'" Filter="&lt;webctrl /&gt;" sap:VirtualizedContainerService.HintSize="338,53.333333333333336" sap2010:WorkflowViewState.IdRef="FindChildren_5" Scope="FIND_CHILDREN">
+                            <ui:FindChildren.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c3ff6f7e-7189-439a-9693-e30de3e40026" InformativeScreenshot="cd1df0f5a263681bce7725a7ad5174e4" Selector="&lt;webctrl aria-role='tree' tag='UL' /&gt;">
+                                <ui:Target.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:Target.TimeoutMS>
+                                <ui:Target.WaitForReady>
+                                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                                </ui:Target.WaitForReady>
+                              </ui:Target>
+                            </ui:FindChildren.Target>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:FindChildren>
+                        </Sequence>
+                      </ActivityAction>
+                    </Catch>
+                  </TryCatch.Catches>
+                </TryCatch>
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="517.3333333333334,1082" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="sd:DataTable" Name="CleanDT" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="436.6666666666667,971.3333333333334" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[skillList]">
+                    <ui:ForEach.Body>
+                      <ActivityAction x:TypeArguments="x:Object">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="x:Object" Name="currentItem" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="400,842.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                          <Sequence.Variables>
+                            <Variable x:TypeArguments="ui:UiElement" Name="Item" />
+                            <Variable x:TypeArguments="x:String" Name="studentName" />
+                            <Variable x:TypeArguments="x:Int32" Name="index" />
+                          </Sequence.Variables>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:ChangeType x:TypeArguments="ui:UiElement" ConvertedValue="[Item]" DisplayName="Change Type" sap:VirtualizedContainerService.HintSize="338,53.333333333333336" sap2010:WorkflowViewState.IdRef="ChangeType`1_1" SourceValue="[currentItem]">
+                            <ui:ChangeType.Format>
+                              <ui:GeneralNumberFormatProvider DecimalDigits="2" DecimalSeparator="." GroupSeparator="," />
+                            </ui:ChangeType.Format>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:ChangeType>
+                          <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="aaname" DisplayName="Get Attribute" sap:VirtualizedContainerService.HintSize="338,184.66666666666666" sap2010:WorkflowViewState.IdRef="GetAttribute_1">
+                            <ui:GetAttribute.Result>
+                              <OutArgument x:TypeArguments="x:String">[strskills]</OutArgument>
+                            </ui:GetAttribute.Result>
+                            <ui:GetAttribute.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[Item]" Id="ade67abf-13c6-4a8f-b2ce-c96b93ad5201">
+                                <ui:Target.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:Target.TimeoutMS>
+                                <ui:Target.WaitForReady>
+                                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                                </ui:Target.WaitForReady>
+                              </ui:Target>
+                            </ui:GetAttribute.Target>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:GetAttribute>
+                          <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="338,91.33333333333333" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[strskills]" />
+                          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="338,53.333333333333336" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+                            <ui:CommentOut.Body>
+                              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,164" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[flag]" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="338,53.333333333333336" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
+                                  <ui:InterruptibleDoWhile.Body>
+                                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="636.6666666666666,1564" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <If Condition="[not strskills.Equals(&quot;-- اختر --&quot;)]" sap:VirtualizedContainerService.HintSize="574.6666666666666,1388" sap2010:WorkflowViewState.IdRef="If_1">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <If.Then>
+                                          <Sequence sap:VirtualizedContainerService.HintSize="496,1107.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <Assign sap:VirtualizedContainerService.HintSize="434,84.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_1">
+                                              <Assign.To>
+                                                <OutArgument x:TypeArguments="x:Boolean">[flag]</OutArgument>
+                                              </Assign.To>
+                                              <Assign.Value>
+                                                <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                              </Assign.Value>
+                                            </Assign>
+                                            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="434,91.33333333333333" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[strskills + &quot; correct&quot;]" />
+                                            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="434,53.333333333333336" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                                              <ui:CommentOut.Body>
+                                                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,164" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                  <uix:NClick ClickType="Single" DisplayName="Click 'المهارة'" sap:VirtualizedContainerService.HintSize="338,53.333333333333336" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="cf02e594-b5b8-4007-9a9c-1d7a996c644d" Version="V3">
+                                                    <uix:NClick.Target>
+                                                      <uix:TargetAnchorable BrowserURL="https://noor.moe.gov.sa/Noor/EduWaveSMS/TeacherMarksMenu.aspx?EKME-sZ-qgdJhYZtXdsecQ2=L7K9wbaeZ-U1" DesignTimeRectangle="879, 609, 30, 35" DesignTimeScaleFactor="1.5" FriendlyName="'SPAN'" FullSelectorArgument="&lt;webctrl aria-role='presentation' css-selector='body&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;span&amp;gt;span&amp;gt;span&amp;gt;span' idx='6' tag='SPAN' /&gt;" FuzzyAccuracy="0.77" FuzzySelectorArgument="&lt;webctrl aria-role='presentation' type='' class='select2-selection__arrow' tag='SPAN' aaname='' /&gt;" Guid="f62b27d3-01d5-4b2f-9f8d-ca8b9ecace8b" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACIAAAAnCAYAAABqippxAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAACvSURBVFhH7dLBCQMhEIXhlO9WYAHePNmADdiADViAFThh9iDhZQ9RA3p4PwyICvux+JJDOgvivd8+HbI7QjBCMEIwQjBCMEKwIUiMUYwxP43eHWn4j4QQHj/8OXpntGFIa02cc48AHT3TO6NNvZFaq1hrvxC6p2czTT/WUopc19URuta92aYhWs65Q3S90hJESynds9oy5F8RghGCEYIRghGCdcjuuSEnRAh2CETkDZzuCUTg63pNAAAAAElFTkSuQmCC" InformativeScreenshot="4c27ad53c230e30073ebfa2bb42450fc.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='EduWave - إدخال نتائج الطالبات على مستوى المادة والمهارة :: نظام نور' /&gt;" SearchSteps="FuzzySelector, Image" Version="V1" Visibility="Interactive">
+                                                        <uix:TargetAnchorable.Anchors>
+                                                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                                            <uix:Target DesignTimeRectangle="1350, 608, 150, 26" ElementType="Text" FriendlyName="'المهارة'" FullSelectorArgument="&lt;webctrl aaname='المهارة' class='StandardFont' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='المهارة' class='StandardFont' tag='SPAN' type='' check:innerText='المهارة' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAJoAAAAeCAYAAADU3gfZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAQ/SURBVHhe7ZnRa9tWFIf3T3oLgoAJeJSZgpZh4UV4sxiYPOghpVAHZsJwHryHqVARggfxwLgUF4yGp3SpTVBZEQSZgsAIAiLw25V0ZcmL4zotaBGcDw7Y11e6gvv5nHPtL0AQGUCiEZlAohGZQKIRmUCiEZlAohGZQKIRmUCi5RTXaKFUKKCw04Th8sHM8DD5VUSBrS/s9+Dc8NHx3c9Eov1f+C6MYxnFooz2yIL5ooHStohm34bPp6yDRCM2Y26g9YhtCtuY4n4bTTF6LTTYxm1g2sdE8z/YsM4N9E516Cc6un0DE9vbSOKPQ6LlhxsX5nMVUlWFPrYxOWtCrihov3Y+L6Ox+w6flkIJVoVQaaJ74X6mcCRaDvHh2hasdw48vmGbcHdG82GfKqEEpYoMpa5EUZNQDOaHIaI12kzo1ZBoOYIJNtahPo43n4UgodW3bgs3G0AtBnMkaJeRHmtL57UHb5VFcwu9p+VorUfsug98PIX33kD3SIVSLaO8K6NxqGH4zuOfxpBoucEbdyAFmxKGgKIQvy5C/f0/B4J7iubPTOjP2EGD379UY+XynJfLuYl22A8KUPtOOD/Ch/OqiTK/ZjkktJcWIdHygWdB24s2sXTQA+vRg0FYZ2okR1FF7yql2j1E868GaPJDxnJI6FywhW48mMeRJKWfjSR7+ja6PwnR+H4Hg/EEE6OHVoVfv6fBWiQ2Ei0XeNMOxGBDBAXd9ymhvAk64cYKUNJZbVPRAol+4aVxpwHtlQnzpYZGKbiWCXRowL1Jeri0JOyGaIbzRHSmyTN5F/xZt9LPSqLlAuflkyhzPW7DnPPBAHZiHBwUww0sH6WyzaaiXVvQeaaUT2JRE7EK1SArsRJ51oDA3qcl8a96aGwvrxGQjAcCximNRMsFTp+XyBWiDbloS2XtE0RLZ0R31IzmVu4WLcloJbSMpPn3LrWol6SMlj8WpZNlifY42VTMhov+Sjn9xNLJ+69CtQOTjy/mrhMt1aNJv1nR2r6D4SEvxaxvHCz6RhItH1zb0OvRpgYZRD5oo3OkQgplYrHdWO7d1onG+jmxpqBW3cVutQZ5N8qI8b2lugJZjNcqQmJzpfiwsFWG/OMP+P5bEdLeHsR4/WC8LkPc4e/j+OprlL8p47sam8s/I9EeOP7VMDnRpUOQbv87sFa0OL5Mvb5vrLl2S4R63MGTSizrcpBoeYCVOvtiiO6JDv1FF73XEzipSrogFm1Lhh5nOs+BdWlhMp2EMf1ziNFf08X7+8Sb0RDjt7fHrUsb7nW0HPtqwP3nDUZDNvfveI4FK/3/6dyGaRgwzi24S98UEi0XBD1d2JCzkpr0SfmCRHug+DMDGitZ2vOgbPFSVddhLzJMviDRHiSp377i2Jahna+qq/mARHug+KzfMf7Q0T5iJ9KTHsxZPktmDIlGZAKJRmQCiUZkAolGZADwL9tlMbPlRnvvAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" />
+                                                          </scg:List>
+                                                        </uix:TargetAnchorable.Anchors>
+                                                      </uix:TargetAnchorable>
+                                                    </uix:NClick.Target>
+                                                    <uix:NClick.VerifyOptions>
+                                                      <uix:VerifyExecutionOptions DisplayName="Element '-- اختر'" Mode="Appears">
+                                                        <uix:VerifyExecutionOptions.Retry>
+                                                          <InArgument x:TypeArguments="x:Boolean" />
+                                                        </uix:VerifyExecutionOptions.Retry>
+                                                        <uix:VerifyExecutionOptions.Target>
+                                                          <uix:TargetAnchorable BrowserURL="https://noor.moe.gov.sa/Noor/EduWaveSMS/TeacherMarksMenu.aspx?EKME-sZ-qgdJhYZtXdsecQ2=L7K9wbaeZ-U1" DesignTimeRectangle="879, 799, 30, 35" DesignTimeScaleFactor="1.5" FriendlyName="'SPAN'" FullSelectorArgument="&lt;webctrl aria-role='presentation' css-selector='body&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;span&amp;gt;span&amp;gt;span&amp;gt;span' idx='6' tag='SPAN' /&gt;" FuzzyAccuracy="0.95" FuzzySelectorArgument="&lt;webctrl aria-role='presentation' type='' class='select2-selection__arrow' tag='SPAN' aaname='' /&gt;" Guid="fbf71a4d-e2aa-46ef-900e-f7e3a1f06283" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACIAAAAnCAYAAABqippxAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAACvSURBVFhH7dLBCQMhEIXhlO9WYAHePNmADdiADViAFThh9iDhZQ9RA3p4PwyICvux+JJDOgvivd8+HbI7QjBCMEIwQjBCMEKwIUiMUYwxP43eHWn4j4QQHj/8OXpntGFIa02cc48AHT3TO6NNvZFaq1hrvxC6p2czTT/WUopc19URuta92aYhWs65Q3S90hJESynds9oy5F8RghGCEYIRghGCdcjuuSEnRAh2CETkDZzuCUTg63pNAAAAAElFTkSuQmCC" InformativeScreenshot="f8ea273e8baa38d95f4714be828ffbda.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='EduWave - إدخال نتائج الطالبات على مستوى المادة والمهارة :: نظام نور' /&gt;" SearchSteps="FuzzySelector, Image" Version="V1" Visibility="Interactive">
+                                                            <uix:TargetAnchorable.Anchors>
+                                                              <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                                                <uix:Target DesignTimeRectangle="782, 792, 494, 46" FriendlyName="'-- اختر'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div' idx='24' tag='DIV' /&gt;" FuzzyAccuracy="0.67" FuzzySelectorArgument="&lt;webctrl type='' class='col-xs-7 col-sm-8 feild_data' tag='DIV' aaname='' check:innerText='-- اختر --&amp;#xD;&amp;#xA;10-غسل الفواكه والخضروات&amp;#xD;&amp;#xA;11-الاستحمام&amp;#xD;&amp;#xA;12-لبس القميص&amp;#xD;&amp;#xA;13-ركوب الدراجة&amp;#xD;&amp;#xA;14-أنا استطيع التصرف' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAfIAAAAyCAYAAACnDlnQAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAANhSURBVHhe7d3BSxxnGMDh/pNzGQhIwEskID14yN6LgodKD3tICKEeClKDyaEY6F6aUoyVheBBhB6FovQgQShI8c3OdmK2Zq27xm5nvu954IWZ+YaF4QN/Di74RQAArSXkANBiQg4ALSbkANBiQg4ALSbkANBiQg4ALSbkANBiQg4ALSbkDbGxsWGMMSaxmQUhb4hZbTgAsyHkmRFygLQIeWaEHCAtQp4ZIQdIi5BnRsgB0iLkmRFygLQIeWaEHCAtQp4ZIQdIi5BnRsgBbuHtkyiKTmyf1OcNIuSZEXKAWxByIW8KIQdycvyqE2W5EJu/RZz9shplUUZ377xerb3bidV7Rcw/3Y8rKx8JuZA3hZADORHyCZ1sR6coBs84mEfbcVxfHiXkDSHkALcg5ELeFJNueK/Xi+Xl5Ymmuhfgf3dtbI9j+9GYQJ3047vlpZgfvI0PA3ZvMb56fhhn9fI/CLmQN8U0G761tTU23KNT3QPQCFOG/PzNWpT3O7H2vBf9vX70ni1FOQhZ54cxGUs95BMQ8oaYZsMvLi5ifX19bMCrqdaqewAmMoxh/dZ3OSNxvGn9JlOG/FPnsf94Lor738ZhfeXSNCG/6TlG335H5snben1KQp6ZaTf89PQ0ut3uJxGvrlVrABNrfMgHBp9RFkvx8vf6/INrP3uMm55DyPkct9nwo6OjWFlZuYx4dVxdA2iUuwj5H39Httuvzz+YJuQzJuSZue2GHxwcXIa8OgZonLsIeRzF5sMiFr6/8rIi5ELeFJ+z4bu7u8MBaKQ7CXnE4bO5KL58OUj6iNRD7lvr7TGr39wAZm4Y24Xo/tiP/t6v8fqn3eG30ft7vegO3rKLh93oDc9H18bMi9WYK8rovBrJmZALeVMIOZCsYWzrGA1m4cHH46vzb2uX83i//uABIRfyphByIFn9bmNj+1+a1c91IW8IIQdSNfzbdrEWO3/WFzIh5JkRciAlx282Y/vnfrx+sRrzRRHlNzvX/+OTRAl5ZoQcSMdZ9J8uxlxZRFHOxeLXvTj6q17KiJBnRsgB0iLkmRFygLQIeWaEHCAtQp4ZIQdIi5BnRsgB0iLkmak23BhjTFozC0IOAC0m5ADQYkIOAC0m5ADQYkIOAC0m5ADQYkIOAC0m5ADQWhHvAXiI+IYpepiFAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" />
+                                                              </scg:List>
+                                                            </uix:TargetAnchorable.Anchors>
+                                                            <uix:TargetAnchorable.PointOffset>
+                                                              <uix:PointOffset X="3" Y="1" />
+                                                            </uix:TargetAnchorable.PointOffset>
+                                                          </uix:TargetAnchorable>
+                                                        </uix:VerifyExecutionOptions.Target>
+                                                        <uix:VerifyExecutionOptions.Timeout>
+                                                          <InArgument x:TypeArguments="x:Double" />
+                                                        </uix:VerifyExecutionOptions.Timeout>
+                                                      </uix:VerifyExecutionOptions>
+                                                    </uix:NClick.VerifyOptions>
+                                                    <sap:WorkflowViewStateService.ViewState>
+                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                      </scg:Dictionary>
+                                                    </sap:WorkflowViewStateService.ViewState>
+                                                  </uix:NClick>
+                                                </Sequence>
+                                              </ui:CommentOut.Body>
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                            </ui:CommentOut>
+                                            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'INPUT'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="434,220" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="cf02e594-b5b8-4007-9a9c-1d7a996c644d" Text="[&quot;غسل&quot;+ &quot;[k(enter)]&quot;]" Version="V3">
+                                              <uix:NTypeInto.Target>
+                                                <uix:TargetAnchorable BrowserURL="https://noor.moe.gov.sa/Noor/EduWaveSMS/TeacherMarksMenu.aspx?EKME-sZ-qgdJhYZtXdsecQ2=L7K9wbaeZ-U1" DesignTimeRectangle="885, 614, 361, 35" DesignTimeScaleFactor="1.5" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl tag='INPUT' type='search' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' type='search' class='select2-search__field' aaname='' /&gt;" Guid="b612c16c-b09b-4122-b745-0c3ec2c9a4bb" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAW0AAAAnCAYAAADEtRmcAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAACySURBVHhe7dSxCcAwEMDA7D+Kl3QqG1Kkf8EdaAU9G4AM0wYIMW2AkDvttZYkaWjHZ9oAzGPaACGmDRBi2gAhpg0QYtoAIaYNEGLaACGmDRBi2gAhpg0QYtoAIaYNEGLaACGmDRBi2gAhpg0QYtoAIaYNEGLaACGmDRBi2gAhpg0QYtoAIaYNEGLaACGmDRBi2gAhpg0QYtoAIaYNEGLaACGmDRDyO21J0syOO20Aptv7BZbdiW+V90WdAAAAAElFTkSuQmCC" InformativeScreenshot="736918ca556903522163d8041249fb98.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='EduWave - إدخال نتائج الطالبات على مستوى المادة والمهارة :: نظام نور' /&gt;" SearchSteps="FuzzySelector, Image" Version="V1" Visibility="Interactive" />
+                                              </uix:NTypeInto.Target>
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                            </uix:NTypeInto>
+                                            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="434,53.333333333333336" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+                                              <ui:CommentOut.Body>
+                                                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,269.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                  <uix:NClick ClickType="Single" DisplayName="Click 'المهارة'" sap:VirtualizedContainerService.HintSize="338,158.66666666666666" sap2010:WorkflowViewState.IdRef="NClick_3" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="cf02e594-b5b8-4007-9a9c-1d7a996c644d" Version="V3">
+                                                    <uix:NClick.Target>
+                                                      <uix:TargetAnchorable BrowserURL="https://noor.moe.gov.sa/Noor/EduWaveSMS/TeacherMarksMenu.aspx?EKME-sZ-qgdJhYZtXdsecQ2=L7K9wbaeZ-U1#" DesignTimeRectangle="879, 807, 30, 35" DesignTimeScaleFactor="1.5" FriendlyName="'SPAN'" FullSelectorArgument="&lt;webctrl aria-role='presentation' css-selector='body&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;span&amp;gt;span&amp;gt;span&amp;gt;span' idx='6' tag='SPAN' /&gt;" FuzzyAccuracy="0.8" FuzzySelectorArgument="&lt;webctrl aria-role='presentation' type='' class='select2-selection__arrow' tag='SPAN' aaname='' /&gt;" Guid="f20ecbbb-56c1-4dd3-a1e8-760ee21a3a7b" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACIAAAAnCAYAAABqippxAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAACvSURBVFhH7dLBCQMhEIXhlK8VWIA3TzZgAzZgAxZgBU4YD7KZ7CGjAffwPhgQFfZn8UUPMUJCCMdnhpyGEAkhEkIkhEgIkRAiqUJSSmSM+Wn4rob6j8QYbz98Hb6jpQ7pvZP3/jaAh8/4jtbSG2mtkXPuK4L3+GzF8mOttZK1dkbwmvdWLYewUsoM4fWOrRCWcx6zazvkXxAiIURCiIQQCSHSDDk9I+QJECIh5BPRG4rYCURSnSU7AAAAAElFTkSuQmCC" InformativeScreenshot="41f3ec4dea54e98dfacee15f83affadf.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='EduWave - إدخال نتائج الطالبات على مستوى المادة والمهارة :: نظام نور' /&gt;" SearchSteps="FuzzySelector, Image" Version="V1" Visibility="Interactive">
+                                                        <uix:TargetAnchorable.Anchors>
+                                                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                                            <uix:Target DesignTimeRectangle="1350, 806, 150, 26" ElementType="Text" FriendlyName="'المهارة'" FullSelectorArgument="&lt;webctrl aaname='المهارة' class='StandardFont' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='المهارة' class='StandardFont' tag='SPAN' type='' check:innerText='المهارة' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAJoAAAAeCAYAAADU3gfZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAQ/SURBVHhe7ZnRa9tWFIf3T3oLgoAJeJSZgpZh4UV4sxiYPOghpVAHZsJwHryHqVARggfxwLgUF4yGp3SpTVBZEQSZgsAIAiLw25V0ZcmL4zotaBGcDw7Y11e6gvv5nHPtL0AQGUCiEZlAohGZQKIRmUCiEZlAohGZQKLlFNdooVQooLDThOHywczwMPlVRIGtL+z34Nzw0fHdz0Si/V/4LoxjGcWijPbIgvmigdK2iGbfhs+nrINEIzZjbqD1iG0K25jifhtNMXotNNjGbWDax0TzP9iwzg30TnXoJzq6fQMT29tI4o9DouWHGxfmcxVSVYU+tjE5a0KuKGi/dj4vo7H7Dp+WQglWhVBponvhfqZwJFoO8eHaFqx3Djy+YZtwd0bzYZ8qoQSligylrkRRk1AM5ochojXaTOjVkGg5ggk21qE+jjefhSCh1bduCzcbQC0GcyRol5Eea0vntQdvlUVzC72n5WitR+y6D3w8hffeQPdIhVIto7wro3GoYfjO45/GkGi5wRt3IAWbEoaAohC/LkL9/T8HgnuK5s9M6M/YQYPfv1Rj5fKcl8u5iXbYDwpQ+044P8KH86qJMr9mOSS0lxYh0fKBZ0HbizaxdNAD69GDQVhnaiRHUUXvKqXaPUTzrwZo8kPGckjoXLCFbjyYx5EkpZ+NJHv6Nro/CdH4fgeD8QQTo4dWhV+/p8FaJDYSLRd40w7EYEMEBd33KaG8CTrhxgpQ0lltU9ECiX7hpXGnAe2VCfOlhkYpuJYJdGjAvUl6uLQk7IZohvNEdKbJM3kX/Fm30s9KouUC5+WTKHM9bsOc88EAdmIcHBTDDSwfpbLNpqJdW9B5ppRPYlETsQrVICuxEnnWgMDepyXxr3pobC+vEZCMBwLGKY1EywVOn5fIFaINuWhLZe0TREtnRHfUjOZW7hYtyWgltIyk+fcutaiXpIyWPxalk2WJ9jjZVMyGi/5KOf3E0sn7r0K1A5OPL+auEy3Vo0m/WdHavoPhIS/FrG8cLPpGEi0fXNvQ69GmBhlEPmijc6RCCmVisd1Y7t3Wicb6ObGmoFbdxW61Bnk3yojxvaW6AlmM1ypCYnOl+LCwVYb84w/4/lsR0t4exHj9YLwuQ9zh7+P46muUvynjuxqbyz8j0R44/tUwOdGlQ5Bu/zuwVrQ4vky9vm+suXZLhHrcwZNKLOtykGh5gJU6+2KI7okO/UUXvdcTOKlKuiAWbUuGHmc6z4F1aWEynYQx/XOI0V/Txfv7xJvREOO3t8etSxvudbQc+2rA/ecNRkM29+94jgUr/f/p3IZpGDDOLbhL3xQSLRcEPV3YkLOSmvRJ+YJEe6D4MwMaK1na86Bs8VJV12EvMky+INEeJKnfvuLYlqGdr6qr+YBEe6D4rN8x/tDRPmIn0pMezFk+S2YMiUZkAolGZAKJRmQCiUZkAolGZADwL8v3MbPdSAh0AAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" />
+                                                          </scg:List>
+                                                        </uix:TargetAnchorable.Anchors>
+                                                      </uix:TargetAnchorable>
+                                                    </uix:NClick.Target>
+                                                  </uix:NClick>
+                                                </Sequence>
+                                              </ui:CommentOut.Body>
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                            </ui:CommentOut>
+                                            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'INPUT  ctl00_PlaceHolde...'" sap:VirtualizedContainerService.HintSize="434,107.33333333333333" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                              <ui:Click.CursorPosition>
+                                                <ui:CursorPosition Position="Center">
+                                                  <ui:CursorPosition.OffsetX>
+                                                    <InArgument x:TypeArguments="x:Int32" />
+                                                  </ui:CursorPosition.OffsetX>
+                                                  <ui:CursorPosition.OffsetY>
+                                                    <InArgument x:TypeArguments="x:Int32" />
+                                                  </ui:CursorPosition.OffsetY>
+                                                </ui:CursorPosition>
+                                              </ui:Click.CursorPosition>
+                                              <ui:Click.Target>
+                                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="89b7d77f-37af-4b2b-a8ff-f0f9e356084c" InformativeScreenshot="31aec424753ad2709251c056870da7b0" Selector="&lt;webctrl name='ctl00$PlaceHolderMain$ibtnS10' tag='INPUT' type='submit' /&gt;">
+                                                  <ui:Target.TimeoutMS>
+                                                    <InArgument x:TypeArguments="x:Int32" />
+                                                  </ui:Target.TimeoutMS>
+                                                  <ui:Target.WaitForReady>
+                                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                                  </ui:Target.WaitForReady>
+                                                </ui:Target>
+                                              </ui:Click.Target>
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                            </ui:Click>
+                                            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="434,53.333333333333336" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+                                              <ui:CommentOut.Body>
+                                                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,164" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                  <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'TD'" sap:VirtualizedContainerService.HintSize="338,53.333333333333336" sap2010:WorkflowViewState.IdRef="GetValue_1">
+                                                    <ui:GetValue.Target>
+                                                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="17ffbd5e-66a0-4d8c-ab5d-7da51aa0a37d" InformativeScreenshot="dd29c309c8ecff46d27ac682b4770dee" Selector="&lt;webctrl class='GridClass' tag='TABLE' /&gt;&lt;webctrl tableRow='4' tag='TD' /&gt;">
+                                                        <ui:Target.TimeoutMS>
+                                                          <InArgument x:TypeArguments="x:Int32" />
+                                                        </ui:Target.TimeoutMS>
+                                                        <ui:Target.WaitForReady>
+                                                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                                                        </ui:Target.WaitForReady>
+                                                      </ui:Target>
+                                                    </ui:GetValue.Target>
+                                                    <ui:GetValue.Value>
+                                                      <OutArgument x:TypeArguments="x:String">[studentName]</OutArgument>
+                                                    </ui:GetValue.Value>
+                                                    <sap:WorkflowViewStateService.ViewState>
+                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                      </scg:Dictionary>
+                                                    </sap:WorkflowViewStateService.ViewState>
+                                                  </ui:GetValue>
+                                                </Sequence>
+                                              </ui:CommentOut.Body>
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                            </ui:CommentOut>
+                                            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="434,53.333333333333336" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[studentName]">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                            </WriteLine>
+                                          </Sequence>
+                                        </If.Then>
+                                        <If.Else>
+                                          <Sequence sap:VirtualizedContainerService.HintSize="400,83.33333333333333" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <Assign sap:VirtualizedContainerService.HintSize="434,84" sap2010:WorkflowViewState.IdRef="Assign_2">
+                                              <Assign.To>
+                                                <OutArgument x:TypeArguments="x:Boolean">[flag]</OutArgument>
+                                              </Assign.To>
+                                              <Assign.Value>
+                                                <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                              </Assign.Value>
+                                            </Assign>
+                                            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="434,86" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[strskills +&quot;wrong choies&quot;]" />
+                                          </Sequence>
+                                        </If.Else>
+                                      </If>
+                                      <ui:Break sap:VirtualizedContainerService.HintSize="574.6666666666666,25.333333333333332" sap2010:WorkflowViewState.IdRef="Break_1" />
+                                    </Sequence>
+                                  </ui:InterruptibleDoWhile.Body>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:InterruptibleDoWhile>
+                              </Sequence>
+                            </ui:CommentOut.Body>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:CommentOut>
+                          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;&quot;,strskills,&quot;تم التقييم&quot;}]" DataTable="[ReportDT]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="338,189.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_1">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:AddDataRow>
+                        </Sequence>
+                      </ActivityAction>
+                    </ui:ForEach.Body>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:ForEach>
+                </Sequence>
+                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="498.6666666666667,53.333333333333336" sap2010:WorkflowViewState.IdRef="CommentOut_11">
+                  <ui:CommentOut.Body>
+                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="462,194" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Sequence sap:VirtualizedContainerService.HintSize="400,83.33333333333333" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Sequence DisplayName="fifth grade skills" sap:VirtualizedContainerService.HintSize="400,83.33333333333333" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:CommentOut DisplayName="If grade = 5 and subject = &quot;&quot;" sap:VirtualizedContainerService.HintSize="338,53.333333333333336" sap2010:WorkflowViewState.IdRef="CommentOut_7">
+                            <ui:CommentOut.Body>
+                              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="540.6666666666666,500.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <If DisplayName="If grade = 4 and subject = &quot;المهارات&quot;" sap:VirtualizedContainerService.HintSize="478.6666666666667,388.6666666666667" sap2010:WorkflowViewState.IdRef="If_2">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <If.Then>
+                                    <Sequence sap:VirtualizedContainerService.HintSize="400,104" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </Sequence>
+                                  </If.Then>
+                                  <If.Else>
+                                    <Sequence sap:VirtualizedContainerService.HintSize="400,104" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </Sequence>
+                                  </If.Else>
+                                </If>
+                              </Sequence>
+                            </ui:CommentOut.Body>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:CommentOut>
+                          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="338,53.333333333333336" sap2010:WorkflowViewState.IdRef="CommentOut_8">
+                            <ui:CommentOut.Body>
+                              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,218" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:FindChildren Children="[skillList]" DisplayName="Find Children 'UL  select2-ctl00_Place...'" Filter="&lt;webctrl /&gt;" sap:VirtualizedContainerService.HintSize="338,107.33333333333333" sap2010:WorkflowViewState.IdRef="FindChildren_2" Scope="FIND_CHILDREN">
+                                  <ui:FindChildren.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c3ff6f7e-7189-439a-9693-e30de3e40026" InformativeScreenshot="99bffaea8cc35b83686ca848ac3ee846" Selector="&lt;webctrl aria-role='tree' tag='UL' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:FindChildren.Target>
+                                </ui:FindChildren>
+                              </Sequence>
+                            </ui:CommentOut.Body>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:CommentOut>
+                          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="338,53.333333333333336" sap2010:WorkflowViewState.IdRef="CommentOut_10">
+                            <ui:CommentOut.Body>
+                              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,164" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="338,53.333333333333336" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[skillList]">
+                                  <ui:ForEach.Body>
+                                    <ActivityAction x:TypeArguments="x:Object">
+                                      <ActivityAction.Argument>
+                                        <DelegateInArgument x:TypeArguments="x:Object" Name="currentItem" />
+                                      </ActivityAction.Argument>
+                                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="446,698.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                                        <Sequence.Variables>
+                                          <Variable x:TypeArguments="ui:UiElement" Name="Item" />
+                                        </Sequence.Variables>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <ui:ChangeType x:TypeArguments="ui:UiElement" ConvertedValue="[Item]" DisplayName="Change Type" sap:VirtualizedContainerService.HintSize="384,136" sap2010:WorkflowViewState.IdRef="ChangeType`1_2" SourceValue="[currentItem]">
+                                          <ui:ChangeType.Format>
+                                            <ui:GeneralNumberFormatProvider DecimalDigits="2" DecimalSeparator="." GroupSeparator="," />
+                                          </ui:ChangeType.Format>
+                                        </ui:ChangeType>
+                                        <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="aaname" DisplayName="Get Attribute" sap:VirtualizedContainerService.HintSize="384,186" sap2010:WorkflowViewState.IdRef="GetAttribute_2">
+                                          <ui:GetAttribute.Result>
+                                            <OutArgument x:TypeArguments="x:String">[strskills]</OutArgument>
+                                          </ui:GetAttribute.Result>
+                                          <ui:GetAttribute.Target>
+                                            <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[Item]" Id="ade67abf-13c6-4a8f-b2ce-c96b93ad5201">
+                                              <ui:Target.TimeoutMS>
+                                                <InArgument x:TypeArguments="x:Int32" />
+                                              </ui:Target.TimeoutMS>
+                                              <ui:Target.WaitForReady>
+                                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                                              </ui:Target.WaitForReady>
+                                            </ui:Target>
+                                          </ui:GetAttribute.Target>
+                                        </ui:GetAttribute>
+                                        <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="384,92" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[strskills]" />
+                                        <ui:CommentOut DisplayName="Add the skill row by row in Datatable" sap:VirtualizedContainerService.HintSize="384,54" sap2010:WorkflowViewState.IdRef="CommentOut_9">
+                                          <ui:CommentOut.Body>
+                                            <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,302" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                              <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;&quot;,strskills,&quot;&quot;}]" DataTable="[ReportDT]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="338,191.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
+                                            </Sequence>
+                                          </ui:CommentOut.Body>
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                        </ui:CommentOut>
+                                      </Sequence>
+                                    </ActivityAction>
+                                  </ui:ForEach.Body>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:ForEach>
+                              </Sequence>
+                            </ui:CommentOut.Body>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:CommentOut>
+                        </Sequence>
+                      </Sequence>
+                    </Sequence>
+                  </ui:CommentOut.Body>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:CommentOut>
+              </Sequence>
+              <Sequence DisplayName="Extract the skills from website to Excel" sap:VirtualizedContainerService.HintSize="560.6666666666666,83.33333333333333" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:FilterDataTable DataTable="[ReportDT]" DisplayName="Filter Data Table" FilterRowsMode="Remove" sap:VirtualizedContainerService.HintSize="338,162.66666666666666" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[ReportDT]" SelectColumnsMode="Keep">
+                  <ui:FilterDataTable.Filters>
+                    <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                      <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
+                        <ui:FilterOperationArgument.Column>
+                          <InArgument x:TypeArguments="x:String">["المهارة"]</InArgument>
+                        </ui:FilterOperationArgument.Column>
+                        <ui:FilterOperationArgument.Operand>
+                          <InArgument x:TypeArguments="x:String">["-- اختر --"]</InArgument>
+                        </ui:FilterOperationArgument.Operand>
+                      </ui:FilterOperationArgument>
+                    </scg:List>
+                  </ui:FilterDataTable.Filters>
+                  <ui:FilterDataTable.SelectColumns>
+                    <scg:List x:TypeArguments="InArgument" Capacity="4">
+                      <x:Null />
+                    </scg:List>
+                  </ui:FilterDataTable.SelectColumns>
+                </ui:FilterDataTable>
+                <ui:WriteRange StartingCell="{x:Null}" AddHeaders="True" DataTable="[ReportDT]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="338,116" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="ReportFifthLifeSkill" WorkbookPath="Data\Result.xlsx" />
+              </Sequence>
+            </Sequence>
+          </ActivityAction>
+        </uix:NApplicationCard.Body>
+        <uix:NApplicationCard.TargetApp>
+          <uix:TargetApp Area="0, 0, 0, 0" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACsAAAAnCAYAAACWn7G7AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAbCSURBVFhH3ZiJT1RXFMZthSqDIMwAso7AMAvWtMbGmLRNGhO7xqppNdVo27RxSdRWkUVKNxMVt0BBAQMiSw11aeqGWrVWG3Hfa6S0amsr7oS26h9gzw/fIY9xoIC4tDf5Mu+ec+6537333HPem27/x/aY4HGBn8Df+KWP/JFqEPI/V+AY01jhOXVjZfLt6+Wezfuz4z0ih/RDI8zEZtD8auban4ekGY0V7gsr3g+LFn33O2YPtnXf81Fk+KVS14Q/ipJGS5/j5qgDzhYk5XiTBfvmxo8Q/ROCB7q7TaQayt17lUh9iXOByHoIgmrzHPlmkortn9hHMc4Y78diT+YkuuSZhbLj92UROA4xE7la6jogsiAwdnDgU42Vnltm/YVi51HREQaBu2dHexoq3DWq+6vS8zcxLrr7sutcFOupXMdSnXDnZ/bJIgsWWAR90kbYhsoObzlf5DxxYH7C8pEDLc+IPAybhnLXaR1nBrEuena5SwmzsxCzpw63vvj6AMsgeW7aNQEL6SWIFCQJ3IIEQbggePfsuJG+iIL6YtdasWGxhEmXNVbOkfUWRAjYMUJAdwXCxCb6UAEL6ykIPLYoMcUXUXB5ueuQMabLM0bTJRFA2vuC8IseGTaqsywYH/GsL6LgyALHPLFhcV1OtqMNsuxu1KncpCpvopdK3We4mKLnhB46WRonECJIXJMSk3r6C8dWLuCu2fG5RtwTUqQ/PRXAs55Yp5v5qDsCyFgFdgE5ljLMBYQol8u/Ns85uLEieQ/gWWSM63SDqL8tfds8W9qWbFtq9fw2gU361nnWD9a/JOM0zskc7DIxytETIk2LOZCdMPzGyn4SHv1u84xM0OndxWlQeNbu2x2BbWb1QhkHKU7E1wVEZqHSKVmj6t1TOiP2wpVEWObOW7aUTceEzNFWkbrlcMiUqukyrq2JkQdWZ8a9pWR5RmboOtU4xigla52x4YT0Bwr6C/r5gMYlhSFA0CbZjbPixihZnpEZuk41yEYrWXZV+lQrqhaEvEHRIDbZVY5d4w8CftvT+kT8WugiGxAivX2Q1YJDuDDGHL8aPuhU36K1JDtz8xHpQ5Rdw6kvQNI8Ufe1U8Ijr5Z6JOfeIQZ+X+YqqZoe847216fHjRVbq2SGGrJDfbFzkvR1wcAPmWYP6Wvqa26+yLKDkGpPw5nleplnn5mo4kKx+4g+f50aO05so7X/W5F7sfTZFHyAAGSqlz7lmsU0t3shy270qMtzTNMJfsp3bh7i6fnC1FdCX6vLd1arHKyZGTte7BNMtnnS511DyQYjU730ydcteHQkDDQ14VjjK+hiiWcHzi+Ves5InzJLzDsE/a+Vea7o5KtmxLyNTvtSqpdKn/ysMRqCTPXSjxLAr7m1IBuW+f1NW9rWg7aM7fvCMnbsbYFZ39VIattjm7pKKxHkbabJq6RPNYMAsP+Y4/hK9QZZp8n+38jyqto62fYgdGLlMGPcE4UTIwep8+rMvtNEZhNwCujDdn3eN0v1XU42LGPb1ZAJK0pDJ1UU34XJXy4Lnbp6iWVYFnmYm9rz24/to9W5cYGIQZ08GJnqu5ysURQGCPgqcHqBOIwRcEsZZzFXKCOP8mWhF6aXOc92OVmjKFChSP44MgOSkGFXcd5WhQIt9F1P9k426CPQNydvQEIzwSNBtj15FjKW7HERz6nzg9kJaSIzh0HQ8UWOOap/mGTZXXY/trEy+RbOzxQ4y6WvH4lNk8t7wjqd3CCbdL3cc5m+F1nSoPViifuw2ku/XWTb827ABIyNPF/k3oXzhnLPxfRXe3MJmzJFysvBSX9WJt/QyY0KllhvlOArKzx10udu4CfgmzT7ULUFImubbJtFQSHFQfSFMo4FWc0vK9fKkmtPLk4aD3jWXQdGaos/W+DaoLK6fFfuoezEYbVSss0LA/AS3EW2+X22vZDPoP0yjte9pj9Ifl7i3GSeSCEXbI6WXOOtKybrjbAh3nZAyN78dFRE88LhJWhBlmON4PhtKRuPk2f5bfpaaA1ia52+rkzGEZ8BAqpW0uGFjmKNx8ulnl82ZNg/FPkAic0qjn51ShzfbdjGVkyLfu9cofsHJUYo5bwb9abonmbhxK483/UiQ/wxKTU9WcAXAniyFfC1QIFg1dx8xnPRiD3yM3rGU1TiBXGCvoJYAURJbcxHccFG58MnttjBhRDADv/NjRTDheA4cUYmaAuQ4vMbohyR5lz1gZ4dwRd97AgX/eplcnYL0vjBFqhP5NjyjE98t2gINH3ojW8L2GEPUW08I/O2Ud/6jJ0u0Dwfz8i87f9rrVu3fwCOC8UfGfk87QAAAABJRU5ErkJggg==" InformativeScreenshot="6efdb0fa8eb7fffa89faef9e44d1f990.jpg" Selector="&lt;html app='chrome.exe' title='EduWave - إدخال نتائج الطالبات على مستوى المادة والمهارة :: نظام نور' /&gt;" Url="https://noor.moe.gov.sa/Noor/EduWaveSMS/TeacherMarksMenu.aspx?EKME-sZ-qgdJhYZtXdsecQ2=L7K9wbaeZ-U1" />
+        </uix:NApplicationCard.TargetApp>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </uix:NApplicationCard>
+    </Sequence>
+  </Sequence>
+</Activity>

@@ -1,0 +1,919 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="TestInvoke" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System.Net.Mail" xmlns:this="clr-namespace:" xmlns:ue="clr-namespace:UiPath.Excel;assembly=UiPath.Excel.Activities" xmlns:ueab="clr-namespace:UiPath.Excel.Activities.Business;assembly=UiPath.Excel.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="StudentName" Type="InOutArgument(x:String)" />
+    <x:Property Name="InputDT" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="StringArray" Type="InOutArgument(s:String[])" />
+    <x:Property Name="count" Type="InOutArgument(x:Int32)" />
+    <x:Property Name="rowCount" Type="InArgument(ui:GenericValue)" />
+    <x:Property Name="VerCode" Type="InArgument(x:Int32)" />
+    <x:Property Name="check" Type="InArgument(x:Boolean)" />
+  </x:Members>
+  <this:TestInvoke.rowCount>
+    <InArgument x:TypeArguments="ui:GenericValue" />
+  </this:TestInvoke.rowCount>
+  <this:TestInvoke.VerCode>
+    <InArgument x:TypeArguments="x:Int32" />
+  </this:TestInvoke.VerCode>
+  <this:TestInvoke.check>
+    <InArgument x:TypeArguments="x:Boolean" />
+  </this:TestInvoke.check>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>986.6666666666665,5388</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>TestInvoke_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="42">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities.Business</x:String>
+      <x:String>UiPath.Excel.Model</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.ExtractData</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="110">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="TestInvoke" sap:VirtualizedContainerService.HintSize="996.6666666666666,5323.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="scg:IEnumerable(ui:UiElement)" Name="Output" />
+      <Variable x:TypeArguments="x:String" Name="str" />
+      <Variable x:TypeArguments="sd:DataTable" Name="DT" />
+      <Variable x:TypeArguments="sd:DataTable" Name="FinalTable" />
+      <Variable x:TypeArguments="x:String" Name="fulltxt" />
+      <Variable x:TypeArguments="x:String" Name="fulltext2" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="934.6666666666666,53.333333333333336" sap2010:WorkflowViewState.IdRef="CommentOut_14">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="654,562.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_30">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Sequence sap:VirtualizedContainerService.HintSize="592,492" sap2010:WorkflowViewState.IdRef="Sequence_16">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:Int32" Name="counter" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="530,381.3333333333333" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_2">
+              <ueab:ExcelProcessScopeX.Body>
+                <ActivityAction x:TypeArguments="ui:IExcelProcess">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="496,294" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:BuildDataTable DataTable="[FinalTable]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;اسم_x0020_الطالبه&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;الصف&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;المادة&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;حالة_x0020_التقييم&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+                    <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="434,83.33333333333333" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_2" ResizeWindow="None" WorkbookPath="Data\Result.xlsx">
+                      <ueab:ExcelApplicationCard.Body>
+                        <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
+                          </ActivityAction.Argument>
+                          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="496,463.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:CommentOut DisplayName="write DT to excel" sap:VirtualizedContainerService.HintSize="434,54" sap2010:WorkflowViewState.IdRef="CommentOut_12">
+                              <ui:CommentOut.Body>
+                                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,272" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ueab:WriteRangeX Append="True" Destination="[Excel.Sheet(&quot;Finalcheck&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="434,161.33333333333334" sap2010:WorkflowViewState.IdRef="WriteRangeX_2" IgnoreEmptySource="False" Source="[FinalTable]" />
+                                </Sequence>
+                              </ui:CommentOut.Body>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:CommentOut>
+                            <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="434,54" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="https://demoqa.com/select-menu">
+                              <ui:OpenBrowser.Body>
+                                <ActivityAction x:TypeArguments="x:Object">
+                                  <ActivityAction.Argument>
+                                    <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                                  </ActivityAction.Argument>
+                                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="594.6666666666666,688" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:InterruptibleWhile CurrentIndex="{x:Null}" Condition="[String.IsNullOrEmpty(fulltxt)]" DisplayName="While" sap:VirtualizedContainerService.HintSize="532.6666666666666,577.3333333333334" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+                                      <ui:InterruptibleWhile.Body>
+                                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,408" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'LABEL  lblresourceUserN...'" sap:VirtualizedContainerService.HintSize="434,107.33333333333333" sap2010:WorkflowViewState.IdRef="GetValue_3">
+                                            <ui:GetValue.Target>
+                                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b4361cf5-944b-4b6e-9fd8-cfcd77129051" InformativeScreenshot="56be659734e557ee2ff41600b00482f9" Selector="&lt;webctrl aaname='Select Value' parentid='selectMenuContainer' tag='DIV' /&gt;">
+                                                <ui:Target.TimeoutMS>
+                                                  <InArgument x:TypeArguments="x:Int32" />
+                                                </ui:Target.TimeoutMS>
+                                                <ui:Target.WaitForReady>
+                                                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                                                </ui:Target.WaitForReady>
+                                              </ui:Target>
+                                            </ui:GetValue.Target>
+                                            <ui:GetValue.Value>
+                                              <OutArgument x:TypeArguments="x:String">[fulltxt]</OutArgument>
+                                            </ui:GetValue.Value>
+                                          </ui:GetValue>
+                                          <ui:RefreshBrowser Browser="{x:Null}" DisplayName="Refresh Browser" sap:VirtualizedContainerService.HintSize="434,25.333333333333332" sap2010:WorkflowViewState.IdRef="RefreshBrowser_1" />
+                                          <Assign sap:VirtualizedContainerService.HintSize="434,84.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_4">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="x:Int32">[counter]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="x:Int32">[counter+1]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                        </Sequence>
+                                      </ui:InterruptibleWhile.Body>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </ui:InterruptibleWhile>
+                                  </Sequence>
+                                </ActivityAction>
+                              </ui:OpenBrowser.Body>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:OpenBrowser>
+                            <ueab:WriteCellX AutoIncrementRow="True" Cell="[Excel.Sheet(&quot;Finalcheck&quot;).Cell(&quot;A2,A3&quot;)]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="434,164.66666666666666" sap2010:WorkflowViewState.IdRef="WriteCellX_1" Value="[fulltxt]" />
+                          </Sequence>
+                        </ActivityAction>
+                      </ueab:ExcelApplicationCard.Body>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ueab:ExcelApplicationCard>
+                  </Sequence>
+                </ActivityAction>
+              </ueab:ExcelProcessScopeX.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ueab:ExcelProcessScopeX>
+          </Sequence>
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+    <Sequence DisplayName="DataTablesAndExcel" sap:VirtualizedContainerService.HintSize="934.6666666666666,5119.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_39">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="messages" />
+        <Variable x:TypeArguments="sd:DataTable" Name="datatable" />
+        <Variable x:TypeArguments="sd:DataTable" Name="datatable2" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[InputDT]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="872.6666666666666,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Report4Skill" WorkbookPath="Data\Result.xlsx" />
+      <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="872.6666666666666,53.333333333333336" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+        <ui:MultipleAssign.AssignOperations>
+          <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="ui:GenericValue">[rowCount]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="ui:GenericValue">[InputDT.Rows.Count]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="s:String[]">[StringArray]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="s:String[]">[new String(rowCount-1){}]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:Int32">[count]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:Int32">0</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+          </scg:List>
+        </ui:MultipleAssign.AssignOperations>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:MultipleAssign>
+      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[InputDT]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="872.6666666666666,53.333333333333336" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+        <ui:ForEachRow.Body>
+          <ActivityAction x:TypeArguments="sd:DataRow">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="400,164" sap2010:WorkflowViewState.IdRef="Sequence_27">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:String" Name="arrayString" />
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="338,53.333333333333336" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+                <ui:MultipleAssign.AssignOperations>
+                  <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[StringArray(count)]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[row("المهارة").ToString()]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_11">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:Int32">[count]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:Int32">[count+1]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                  </scg:List>
+                </ui:MultipleAssign.AssignOperations>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:MultipleAssign>
+            </Sequence>
+          </ActivityAction>
+        </ui:ForEachRow.Body>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:ForEachRow>
+      <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: EduWave - إدخال نتائج الطالبات على مستوى المادة والمهارة :: نظام نور" sap:VirtualizedContainerService.HintSize="872.6666666666666,4466" sap2010:WorkflowViewState.IdRef="NApplicationCard_3" InteractionMode="DebuggerApi" ScopeGuid="fb06fb35-3f6d-4178-b7cc-a16f1f7fffbb" Version="V2">
+        <uix:NApplicationCard.Body>
+          <ActivityAction x:TypeArguments="x:Object">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="838.6666666666666,4247.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_33">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="776.6666666666666,2604.6666666666665" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[StringArray]">
+                <ui:ForEach.Body>
+                  <ActivityAction x:TypeArguments="x:Object">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="x:Object" Name="item" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="740,2476.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="678,91.33333333333333" sap2010:WorkflowViewState.IdRef="WriteLine_7" Text="[item.ToString]" />
+                      <Delay Duration="00:00:01" sap:VirtualizedContainerService.HintSize="678,91.33333333333333" sap2010:WorkflowViewState.IdRef="Delay_2" />
+                      <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="678,2098" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <TryCatch.Try>
+                          <Sequence sap:VirtualizedContainerService.HintSize="639.3333333333334,1862" sap2010:WorkflowViewState.IdRef="Sequence_43">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <uix:NClick ClickType="Single" DisplayName="Click 'المهارة'" sap:VirtualizedContainerService.HintSize="577.3333333333334,53.333333333333336" sap2010:WorkflowViewState.IdRef="NClick_10" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="fb06fb35-3f6d-4178-b7cc-a16f1f7fffbb" Version="V3">
+                              <uix:NClick.Target>
+                                <uix:TargetAnchorable BrowserURL="https://noor.moe.gov.sa/Noor/EduWaveSMS/TeacherMarksMenu.aspx?EKME-sZ-qgdJhYZtXdsecQ2=L7K9wbaeZ-U1" DesignTimeRectangle="879, 739, 30, 35" DesignTimeScaleFactor="1.5" FriendlyName="'SPAN'" FullSelectorArgument="&lt;webctrl aria-role='presentation' css-selector='body&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;span&amp;gt;span&amp;gt;span&amp;gt;span' idx='6' tag='SPAN' /&gt;" FuzzyAccuracy="0.76" FuzzySelectorArgument="&lt;webctrl aria-role='presentation' type='' class='select2-selection__arrow' tag='SPAN' aaname='' /&gt;" Guid="ed691db6-d399-42cf-8373-33159447e637" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACIAAAAnCAYAAABqippxAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAACvSURBVFhH7dLBCQMhEIXhlO9WYAHePNmADdiADViAFThh9iDhZQ9RA3p4PwyICvux+JJDOgvivd8+HbI7QjBCMEIwQjBCMEKwIUiMUYwxP43eHWn4j4QQHj/8OXpntGFIa02cc48AHT3TO6NNvZFaq1hrvxC6p2czTT/WUopc19URuta92aYhWs65Q3S90hJESynds9oy5F8RghGCEYIRghGCdcjuuSEnRAh2CETkDZzuCUTg63pNAAAAAElFTkSuQmCC" InformativeScreenshot="681e94e26fa5eda435f80561a9208082.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='EduWave - إدخال نتائج الطالبات على مستوى المادة والمهارة :: نظام نور' /&gt;" SearchSteps="FuzzySelector, Image" Version="V1" Visibility="Interactive">
+                                  <uix:TargetAnchorable.Anchors>
+                                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                      <uix:Target DesignTimeRectangle="1350, 738, 150, 26" ElementType="Text" FriendlyName="'المهارة'" FullSelectorArgument="&lt;webctrl aaname='المهارة' class='StandardFont' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='المهارة' class='StandardFont' tag='SPAN' type='' check:innerText='المهارة' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAJoAAAAeCAYAAADU3gfZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAQ/SURBVHhe7ZnRa9tWFIf3T3oLgoAJeJSZgpZh4UV4sxiYPOghpVAHZsJwHryHqVARggfxwLgUF4yGp3SpTVBZEQSZgsAIAiLw25V0ZcmL4zotaBGcDw7Y11e6gvv5nHPtL0AQGUCiEZlAohGZQKIRmUCiEZlAohGZQKIRmUCi5RTXaKFUKKCw04Th8sHM8DD5VUSBrS/s9+Dc8NHx3c9Eov1f+C6MYxnFooz2yIL5ooHStohm34bPp6yDRCM2Y26g9YhtCtuY4n4bTTF6LTTYxm1g2sdE8z/YsM4N9E516Cc6un0DE9vbSOKPQ6LlhxsX5nMVUlWFPrYxOWtCrihov3Y+L6Ox+w6flkIJVoVQaaJ74X6mcCRaDvHh2hasdw48vmGbcHdG82GfKqEEpYoMpa5EUZNQDOaHIaI12kzo1ZBoOYIJNtahPo43n4UgodW3bgs3G0AtBnMkaJeRHmtL57UHb5VFcwu9p+VorUfsug98PIX33kD3SIVSLaO8K6NxqGH4zuOfxpBoucEbdyAFmxKGgKIQvy5C/f0/B4J7iubPTOjP2EGD379UY+XynJfLuYl22A8KUPtOOD/Ch/OqiTK/ZjkktJcWIdHygWdB24s2sXTQA+vRg0FYZ2okR1FF7yql2j1E868GaPJDxnJI6FywhW48mMeRJKWfjSR7+ja6PwnR+H4Hg/EEE6OHVoVfv6fBWiQ2Ei0XeNMOxGBDBAXd9ymhvAk64cYKUNJZbVPRAol+4aVxpwHtlQnzpYZGKbiWCXRowL1Jeri0JOyGaIbzRHSmyTN5F/xZt9LPSqLlAuflkyhzPW7DnPPBAHZiHBwUww0sH6WyzaaiXVvQeaaUT2JRE7EK1SArsRJ51oDA3qcl8a96aGwvrxGQjAcCximNRMsFTp+XyBWiDbloS2XtE0RLZ0R31IzmVu4WLcloJbSMpPn3LrWol6SMlj8WpZNlifY42VTMhov+Sjn9xNLJ+69CtQOTjy/mrhMt1aNJv1nR2r6D4SEvxaxvHCz6RhItH1zb0OvRpgYZRD5oo3OkQgplYrHdWO7d1onG+jmxpqBW3cVutQZ5N8qI8b2lugJZjNcqQmJzpfiwsFWG/OMP+P5bEdLeHsR4/WC8LkPc4e/j+OprlL8p47sam8s/I9EeOP7VMDnRpUOQbv87sFa0OL5Mvb5vrLl2S4R63MGTSizrcpBoeYCVOvtiiO6JDv1FF73XEzipSrogFm1Lhh5nOs+BdWlhMp2EMf1ziNFf08X7+8Sb0RDjt7fHrUsb7nW0HPtqwP3nDUZDNvfveI4FK/3/6dyGaRgwzi24S98UEi0XBD1d2JCzkpr0SfmCRHug+DMDGitZ2vOgbPFSVddhLzJMviDRHiSp377i2Jahna+qq/mARHug+KzfMf7Q0T5iJ9KTHsxZPktmDIlGZAKJRmQCiUZkAolGZADwL9tlMbPlRnvvAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" />
+                                    </scg:List>
+                                  </uix:TargetAnchorable.Anchors>
+                                </uix:TargetAnchorable>
+                              </uix:NClick.Target>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </uix:NClick>
+                            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ContinueOnError="False" DisplayName="Type Into 'المهارة'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="577.3333333333334,220" sap2010:WorkflowViewState.IdRef="NTypeInto_9" ScopeIdentifier="fb06fb35-3f6d-4178-b7cc-a16f1f7fffbb" Text="[item.ToString+ &quot;[k(enter)]&quot;]" Version="V3">
+                              <uix:NTypeInto.Target>
+                                <uix:TargetAnchorable BrowserURL="https://noor.moe.gov.sa/Noor/EduWaveSMS/TeacherMarksMenu.aspx?EKME-sZ-qgdJhYZtXdsecQ2=L7K9wbaeZ-U1" DesignTimeRectangle="885, 640, 361, 35" DesignTimeScaleFactor="1.5" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl tag='INPUT' type='search' /&gt;" FuzzyAccuracy="0.99" FuzzySelectorArgument="&lt;webctrl tag='INPUT' type='search' class='select2-search__field' aaname='' /&gt;" Guid="11980902-e8d4-46a9-bf0b-89f48350a1b6" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAW0AAAAnCAYAAADEtRmcAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAACySURBVHhe7dSxCcAwEMDA7D+Kl3QqG1Kkf8EdaAU9G4AM0wYIMW2AkDvttZYkaWjHZ9oAzGPaACGmDRBi2gAhpg0QYtoAIaYNEGLaACGmDRBi2gAhpg0QYtoAIaYNEGLaACGmDRBi2gAhpg0QYtoAIaYNEGLaACGmDRBi2gAhpg0QYtoAIaYNEGLaACGmDRBi2gAhpg0QYtoAIaYNEGLaACGmDRDyO21J0syOO20Aptv7BZbdiW+V90WdAAAAAElFTkSuQmCC" InformativeScreenshot="fc6b115cacf452dbabb2673a1215c263.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='EduWave - إدخال نتائج الطالبات على مستوى المادة والمهارة :: نظام نور' /&gt;" SearchSteps="FuzzySelector, Image" Version="V1" Visibility="Interactive">
+                                  <uix:TargetAnchorable.Anchors>
+                                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                                      <uix:Target DesignTimeRectangle="1350, 598, 150, 26" ElementType="Text" FriendlyName="'المهارة'" FullSelectorArgument="&lt;webctrl aaname='المهارة' class='StandardFont' tag='SPAN' /&gt;" FuzzyAccuracy="0.98" FuzzySelectorArgument="&lt;webctrl aaname='المهارة' class='StandardFont' tag='SPAN' type='' check:innerText='المهارة' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAJoAAAAeCAYAAADU3gfZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAQ/SURBVHhe7ZnRa9tWFIf3T3oLgoAJeJSZgpZh4UV4sxiYPOghpVAHZsJwHryHqVARggfxwLgUF4yGp3SpTVBZEQSZgsAIAiLw25V0ZcmL4zotaBGcDw7Y11e6gvv5nHPtL0AQGUCiEZlAohGZQKIRmUCiEZlAohGZQKLlFNdooVQooLDThOHywczwMPlVRIGtL+z34Nzw0fHdz0Si/V/4LoxjGcWijPbIgvmigdK2iGbfhs+nrINEIzZjbqD1iG0K25jifhtNMXotNNjGbWDax0TzP9iwzg30TnXoJzq6fQMT29tI4o9DouWHGxfmcxVSVYU+tjE5a0KuKGi/dj4vo7H7Dp+WQglWhVBponvhfqZwJFoO8eHaFqx3Djy+YZtwd0bzYZ8qoQSligylrkRRk1AM5ochojXaTOjVkGg5ggk21qE+jjefhSCh1bduCzcbQC0GcyRol5Eea0vntQdvlUVzC72n5WitR+y6D3w8hffeQPdIhVIto7wro3GoYfjO45/GkGi5wRt3IAWbEoaAohC/LkL9/T8HgnuK5s9M6M/YQYPfv1Rj5fKcl8u5iXbYDwpQ+044P8KH86qJMr9mOSS0lxYh0fKBZ0HbizaxdNAD69GDQVhnaiRHUUXvKqXaPUTzrwZo8kPGckjoXLCFbjyYx5EkpZ+NJHv6Nro/CdH4fgeD8QQTo4dWhV+/p8FaJDYSLRd40w7EYEMEBd33KaG8CTrhxgpQ0lltU9ECiX7hpXGnAe2VCfOlhkYpuJYJdGjAvUl6uLQk7IZohvNEdKbJM3kX/Fm30s9KouUC5+WTKHM9bsOc88EAdmIcHBTDDSwfpbLNpqJdW9B5ppRPYlETsQrVICuxEnnWgMDepyXxr3pobC+vEZCMBwLGKY1EywVOn5fIFaINuWhLZe0TREtnRHfUjOZW7hYtyWgltIyk+fcutaiXpIyWPxalk2WJ9jjZVMyGi/5KOf3E0sn7r0K1A5OPL+auEy3Vo0m/WdHavoPhIS/FrG8cLPpGEi0fXNvQ69GmBhlEPmijc6RCCmVisd1Y7t3Wicb6ObGmoFbdxW61Bnk3yojxvaW6AlmM1ypCYnOl+LCwVYb84w/4/lsR0t4exHj9YLwuQ9zh7+P46muUvynjuxqbyz8j0R44/tUwOdGlQ5Bu/zuwVrQ4vky9vm+suXZLhHrcwZNKLOtykGh5gJU6+2KI7okO/UUXvdcTOKlKuiAWbUuGHmc6z4F1aWEynYQx/XOI0V/Txfv7xJvREOO3t8etSxvudbQc+2rA/ecNRkM29+94jgUr/f/p3IZpGDDOLbhL3xQSLRcEPV3YkLOSmvRJ+YJEe6D4MwMaK1na86Bs8VJV12EvMky+INEeJKnfvuLYlqGdr6qr+YBEe6D4rN8x/tDRPmIn0pMezFk+S2YMiUZkAolGZAKJRmQCiUZkAolGZADwL8v3MbPdSAh0AAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" />
+                                    </scg:List>
+                                  </uix:TargetAnchorable.Anchors>
+                                </uix:TargetAnchorable>
+                              </uix:NTypeInto.Target>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </uix:NTypeInto>
+                            <ui:UiElementExists DisplayName="Element Exists 'INPUT'" Exists="[check]" sap:VirtualizedContainerService.HintSize="577.3333333333334,107.33333333333333" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+                              <ui:UiElementExists.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="31f3d2c5-9371-4e45-84bb-c33ced91d306" InformativeScreenshot="42185afee7268c2feecb467075f76b5c" Selector="&lt;webctrl tag='INPUT' type='search' /&gt;">
+                                  <ui:Target.TimeoutMS>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:Target.TimeoutMS>
+                                  <ui:Target.WaitForReady>
+                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                  </ui:Target.WaitForReady>
+                                </ui:Target>
+                              </ui:UiElementExists.Target>
+                            </ui:UiElementExists>
+                            <If Condition="[check]" sap:VirtualizedContainerService.HintSize="577.3333333333334,1245.3333333333333" sap2010:WorkflowViewState.IdRef="If_1">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <If.Then>
+                                <Sequence sap:VirtualizedContainerService.HintSize="498.6666666666667,579.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_50">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436.6666666666667,337.3333333333333" sap2010:WorkflowViewState.IdRef="CommentOut_16">
+                                    <ui:CommentOut.Body>
+                                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,257.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_54">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <uix:NClick ClickType="Single" DisplayName="Click 'المهارة'" sap:VirtualizedContainerService.HintSize="338,53.333333333333336" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="fb06fb35-3f6d-4178-b7cc-a16f1f7fffbb" Version="V3">
+                                          <uix:NClick.Target>
+                                            <uix:TargetAnchorable BrowserURL="https://noor.moe.gov.sa/Noor/EduWaveSMS/TeacherMarksMenu.aspx?EKME-sZ-qgdJhYZtXdsecQ2=L7K9wbaeZ-U1" DesignTimeRectangle="879, 739, 30, 35" DesignTimeScaleFactor="1.5" FriendlyName="'SPAN'" FullSelectorArgument="&lt;webctrl aria-role='presentation' css-selector='body&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;span&amp;gt;span&amp;gt;span&amp;gt;span' idx='6' tag='SPAN' /&gt;" FuzzyAccuracy="0.76" FuzzySelectorArgument="&lt;webctrl aria-role='presentation' type='' class='select2-selection__arrow' tag='SPAN' aaname='' /&gt;" Guid="ed691db6-d399-42cf-8373-33159447e637" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACIAAAAnCAYAAABqippxAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAACvSURBVFhH7dLBCQMhEIXhlO9WYAHePNmADdiADViAFThh9iDhZQ9RA3p4PwyICvux+JJDOgvivd8+HbI7QjBCMEIwQjBCMEKwIUiMUYwxP43eHWn4j4QQHj/8OXpntGFIa02cc48AHT3TO6NNvZFaq1hrvxC6p2czTT/WUopc19URuta92aYhWs65Q3S90hJESynds9oy5F8RghGCEYIRghGCdcjuuSEnRAh2CETkDZzuCUTg63pNAAAAAElFTkSuQmCC" InformativeScreenshot="681e94e26fa5eda435f80561a9208082.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='EduWave - إدخال نتائج الطالبات على مستوى المادة والمهارة :: نظام نور' /&gt;" SearchSteps="FuzzySelector, Image" Version="V1" Visibility="Interactive">
+                                              <uix:TargetAnchorable.Anchors>
+                                                <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                                  <uix:Target DesignTimeRectangle="1350, 738, 150, 26" ElementType="Text" FriendlyName="'المهارة'" FullSelectorArgument="&lt;webctrl aaname='المهارة' class='StandardFont' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='المهارة' class='StandardFont' tag='SPAN' type='' check:innerText='المهارة' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAJoAAAAeCAYAAADU3gfZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAQ/SURBVHhe7ZnRa9tWFIf3T3oLgoAJeJSZgpZh4UV4sxiYPOghpVAHZsJwHryHqVARggfxwLgUF4yGp3SpTVBZEQSZgsAIAiLw25V0ZcmL4zotaBGcDw7Y11e6gvv5nHPtL0AQGUCiEZlAohGZQKIRmUCiEZlAohGZQKIRmUCi5RTXaKFUKKCw04Th8sHM8DD5VUSBrS/s9+Dc8NHx3c9Eov1f+C6MYxnFooz2yIL5ooHStohm34bPp6yDRCM2Y26g9YhtCtuY4n4bTTF6LTTYxm1g2sdE8z/YsM4N9E516Cc6un0DE9vbSOKPQ6LlhxsX5nMVUlWFPrYxOWtCrihov3Y+L6Ox+w6flkIJVoVQaaJ74X6mcCRaDvHh2hasdw48vmGbcHdG82GfKqEEpYoMpa5EUZNQDOaHIaI12kzo1ZBoOYIJNtahPo43n4UgodW3bgs3G0AtBnMkaJeRHmtL57UHb5VFcwu9p+VorUfsug98PIX33kD3SIVSLaO8K6NxqGH4zuOfxpBoucEbdyAFmxKGgKIQvy5C/f0/B4J7iubPTOjP2EGD379UY+XynJfLuYl22A8KUPtOOD/Ch/OqiTK/ZjkktJcWIdHygWdB24s2sXTQA+vRg0FYZ2okR1FF7yql2j1E868GaPJDxnJI6FywhW48mMeRJKWfjSR7+ja6PwnR+H4Hg/EEE6OHVoVfv6fBWiQ2Ei0XeNMOxGBDBAXd9ymhvAk64cYKUNJZbVPRAol+4aVxpwHtlQnzpYZGKbiWCXRowL1Jeri0JOyGaIbzRHSmyTN5F/xZt9LPSqLlAuflkyhzPW7DnPPBAHZiHBwUww0sH6WyzaaiXVvQeaaUT2JRE7EK1SArsRJ51oDA3qcl8a96aGwvrxGQjAcCximNRMsFTp+XyBWiDbloS2XtE0RLZ0R31IzmVu4WLcloJbSMpPn3LrWol6SMlj8WpZNlifY42VTMhov+Sjn9xNLJ+69CtQOTjy/mrhMt1aNJv1nR2r6D4SEvxaxvHCz6RhItH1zb0OvRpgYZRD5oo3OkQgplYrHdWO7d1onG+jmxpqBW3cVutQZ5N8qI8b2lugJZjNcqQmJzpfiwsFWG/OMP+P5bEdLeHsR4/WC8LkPc4e/j+OprlL8p47sam8s/I9EeOP7VMDnRpUOQbv87sFa0OL5Mvb5vrLl2S4R63MGTSizrcpBoeYCVOvtiiO6JDv1FF73XEzipSrogFm1Lhh5nOs+BdWlhMp2EMf1ziNFf08X7+8Sb0RDjt7fHrUsb7nW0HPtqwP3nDUZDNvfveI4FK/3/6dyGaRgwzi24S98UEi0XBD1d2JCzkpr0SfmCRHug+DMDGitZ2vOgbPFSVddhLzJMviDRHiSp377i2Jahna+qq/mARHug+KzfMf7Q0T5iJ9KTHsxZPktmDIlGZAKJRmQCiUZkAolGZADwL9tlMbPlRnvvAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" />
+                                                </scg:List>
+                                              </uix:TargetAnchorable.Anchors>
+                                            </uix:TargetAnchorable>
+                                          </uix:NClick.Target>
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                        </uix:NClick>
+                                        <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ContinueOnError="False" DisplayName="Type Into 'المهارة'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="338,53.333333333333336" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="fb06fb35-3f6d-4178-b7cc-a16f1f7fffbb" Text="[item.ToString+ &quot;[k(enter)]&quot;]" Version="V3">
+                                          <uix:NTypeInto.Target>
+                                            <uix:TargetAnchorable BrowserURL="https://noor.moe.gov.sa/Noor/EduWaveSMS/TeacherMarksMenu.aspx?EKME-sZ-qgdJhYZtXdsecQ2=L7K9wbaeZ-U1" DesignTimeRectangle="885, 629, 361, 35" DesignTimeScaleFactor="1.5" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl tag='INPUT' type='search' /&gt;" FuzzyAccuracy="0.99" FuzzySelectorArgument="&lt;webctrl tag='INPUT' type='search' class='select2-search__field' aaname='' /&gt;" Guid="11980902-e8d4-46a9-bf0b-89f48350a1b6" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAW0AAAAnCAYAAADEtRmcAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAACySURBVHhe7dSxCcAwEMDA7D+Kl3QqG1Kkf8EdaAU9G4AM0wYIudNea0mShnZ8pg3APKYNEGLaACGmDRBi2gAhpg0QYtoAIaYNEGLaACGmDRBi2gAhpg0QYtoAIaYNEGLaACGmDRBi2gAhpg0QYtoAIaYNEGLaACGmDRBi2gAhpg0QYtoAIaYNEGLaACGmDRBi2gAhpg0QYtoAIaYNEGLaACG/05Ykzey40wZgPtMGyNj7Bf1yiW87R+iQAAAAAElFTkSuQmCC" InformativeScreenshot="2231ecf9101972f5679f9b13fa6948b5.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='EduWave - إدخال نتائج الطالبات على مستوى المادة والمهارة :: نظام نور' /&gt;" SearchSteps="FuzzySelector, Image" Version="V1" Visibility="Interactive">
+                                              <uix:TargetAnchorable.Anchors>
+                                                <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                                  <uix:Target DesignTimeRectangle="1350, 967, 150, 26" ElementType="Text" FriendlyName="'المهارة'" FullSelectorArgument="&lt;webctrl aaname='المهارة' class='StandardFont' tag='SPAN' /&gt;" FuzzyAccuracy="0.98" FuzzySelectorArgument="&lt;webctrl aaname='المهارة' class='StandardFont' tag='SPAN' type='' check:innerText='المهارة' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAJoAAAAeCAYAAADU3gfZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAQ/SURBVHhe7ZnRa9tWFIf3T3oLgoAJeJSZgpZh4UV4sxiYPOghpVAHZsJwHryHqVARggfxwLgUF4yGp3SpTVBZEQSZgsAIAiLw25V0ZcmL4zotaBGcDw7Y11e6gvv5nHPtL0AQGUCiEZlAohGZQKIRmUCiEZlAohGZQKLlFNdooVQooLDThOHywczwMPlVRIGtL+z34Nzw0fHdz0Si/V/4LoxjGcWijPbIgvmigdK2iGbfhs+nrINEIzZjbqD1iG0K25jifhtNMXotNNjGbWDax0TzP9iwzg30TnXoJzq6fQMT29tI4o9DouWHGxfmcxVSVYU+tjE5a0KuKGi/dj4vo7H7Dp+WQglWhVBponvhfqZwJFoO8eHaFqx3Djy+YZtwd0bzYZ8qoQSligylrkRRk1AM5ochojXaTOjVkGg5ggk21qE+jjefhSCh1bduCzcbQC0GcyRol5Eea0vntQdvlUVzC72n5WitR+y6D3w8hffeQPdIhVIto7wro3GoYfjO45/GkGi5wRt3IAWbEoaAohC/LkL9/T8HgnuK5s9M6M/YQYPfv1Rj5fKcl8u5iXbYDwpQ+044P8KH86qJMr9mOSS0lxYh0fKBZ0HbizaxdNAD69GDQVhnaiRHUUXvKqXaPUTzrwZo8kPGckjoXLCFbjyYx5EkpZ+NJHv6Nro/CdH4fgeD8QQTo4dWhV+/p8FaJDYSLRd40w7EYEMEBd33KaG8CTrhxgpQ0lltU9ECiX7hpXGnAe2VCfOlhkYpuJYJdGjAvUl6uLQk7IZohvNEdKbJM3kX/Fm30s9KouUC5+WTKHM9bsOc88EAdmIcHBTDDSwfpbLNpqJdW9B5ppRPYlETsQrVICuxEnnWgMDepyXxr3pobC+vEZCMBwLGKY1EywVOn5fIFaINuWhLZe0TREtnRHfUjOZW7hYtyWgltIyk+fcutaiXpIyWPxalk2WJ9jjZVMyGi/5KOf3E0sn7r0K1A5OPL+auEy3Vo0m/WdHavoPhIS/FrG8cLPpGEi0fXNvQ69GmBhlEPmijc6RCCmVisd1Y7t3Wicb6ObGmoFbdxW61Bnk3yojxvaW6AlmM1ypCYnOl+LCwVYb84w/4/lsR0t4exHj9YLwuQ9zh7+P46muUvynjuxqbyz8j0R44/tUwOdGlQ5Bu/zuwVrQ4vky9vm+suXZLhHrcwZNKLOtykGh5gJU6+2KI7okO/UUXvdcTOKlKuiAWbUuGHmc6z4F1aWEynYQx/XOI0V/Txfv7xJvREOO3t8etSxvudbQc+2rA/ecNRkM29+94jgUr/f/p3IZpGDDOLbhL3xQSLRcEPV3YkLOSmvRJ+YJEe6D4MwMaK1na86Bs8VJV12EvMky+INEeJKnfvuLYlqGdr6qr+YBEe6D4rN8x/tDRPmIn0pMezFk+S2YMiUZkAolGZAKJRmQCiUZkAolGZADwL8v3MbPdSAh0AAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" />
+                                                </scg:List>
+                                              </uix:TargetAnchorable.Anchors>
+                                            </uix:TargetAnchorable>
+                                          </uix:NTypeInto.Target>
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                        </uix:NTypeInto>
+                                      </Sequence>
+                                    </ui:CommentOut.Body>
+                                  </ui:CommentOut>
+                                  <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436.6666666666667,91.33333333333333" sap2010:WorkflowViewState.IdRef="WriteLine_8" Text="[&quot;continue&quot;+ check.ToString]" />
+                                </Sequence>
+                              </If.Then>
+                              <If.Else>
+                                <Sequence sap:VirtualizedContainerService.HintSize="400,485.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_51">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Warn" Message="[&quot;type into element found ? &quot; +  check.ToString]" />
+                                  <uix:NClick ClickType="Single" DisplayName="Click 'المهارة'" sap:VirtualizedContainerService.HintSize="338,53.333333333333336" sap2010:WorkflowViewState.IdRef="NClick_7" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="fb06fb35-3f6d-4178-b7cc-a16f1f7fffbb" Version="V3">
+                                    <uix:NClick.Target>
+                                      <uix:TargetAnchorable BrowserURL="https://noor.moe.gov.sa/Noor/EduWaveSMS/TeacherMarksMenu.aspx?EKME-sZ-qgdJhYZtXdsecQ2=L7K9wbaeZ-U1" DesignTimeRectangle="879, 739, 30, 35" DesignTimeScaleFactor="1.5" FriendlyName="'SPAN'" FullSelectorArgument="&lt;webctrl aria-role='presentation' css-selector='body&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;span&amp;gt;span&amp;gt;span&amp;gt;span' idx='6' tag='SPAN' /&gt;" FuzzyAccuracy="0.76" FuzzySelectorArgument="&lt;webctrl aria-role='presentation' type='' class='select2-selection__arrow' tag='SPAN' aaname='' /&gt;" Guid="ed691db6-d399-42cf-8373-33159447e637" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACIAAAAnCAYAAABqippxAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAACvSURBVFhH7dLBCQMhEIXhlO9WYAHePNmADdiADViAFThh9iDhZQ9RA3p4PwyICvux+JJDOgvivd8+HbI7QjBCMEIwQjBCMEKwIUiMUYwxP43eHWn4j4QQHj/8OXpntGFIa02cc48AHT3TO6NNvZFaq1hrvxC6p2czTT/WUopc19URuta92aYhWs65Q3S90hJESynds9oy5F8RghGCEYIRghGCdcjuuSEnRAh2CETkDZzuCUTg63pNAAAAAElFTkSuQmCC" InformativeScreenshot="681e94e26fa5eda435f80561a9208082.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='EduWave - إدخال نتائج الطالبات على مستوى المادة والمهارة :: نظام نور' /&gt;" SearchSteps="FuzzySelector, Image" Version="V1" Visibility="Interactive">
+                                        <uix:TargetAnchorable.Anchors>
+                                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                            <uix:Target DesignTimeRectangle="1350, 738, 150, 26" ElementType="Text" FriendlyName="'المهارة'" FullSelectorArgument="&lt;webctrl aaname='المهارة' class='StandardFont' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='المهارة' class='StandardFont' tag='SPAN' type='' check:innerText='المهارة' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAJoAAAAeCAYAAADU3gfZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAQ/SURBVHhe7ZnRa9tWFIf3T3oLgoAJeJSZgpZh4UV4sxiYPOghpVAHZsJwHryHqVARggfxwLgUF4yGp3SpTVBZEQSZgsAIAiLw25V0ZcmL4zotaBGcDw7Y11e6gvv5nHPtL0AQGUCiEZlAohGZQKIRmUCiEZlAohGZQKIRmUCi5RTXaKFUKKCw04Th8sHM8DD5VUSBrS/s9+Dc8NHx3c9Eov1f+C6MYxnFooz2yIL5ooHStohm34bPp6yDRCM2Y26g9YhtCtuY4n4bTTF6LTTYxm1g2sdE8z/YsM4N9E516Cc6un0DE9vbSOKPQ6LlhxsX5nMVUlWFPrYxOWtCrihov3Y+L6Ox+w6flkIJVoVQaaJ74X6mcCRaDvHh2hasdw48vmGbcHdG82GfKqEEpYoMpa5EUZNQDOaHIaI12kzo1ZBoOYIJNtahPo43n4UgodW3bgs3G0AtBnMkaJeRHmtL57UHb5VFcwu9p+VorUfsug98PIX33kD3SIVSLaO8K6NxqGH4zuOfxpBoucEbdyAFmxKGgKIQvy5C/f0/B4J7iubPTOjP2EGD379UY+XynJfLuYl22A8KUPtOOD/Ch/OqiTK/ZjkktJcWIdHygWdB24s2sXTQA+vRg0FYZ2okR1FF7yql2j1E868GaPJDxnJI6FywhW48mMeRJKWfjSR7+ja6PwnR+H4Hg/EEE6OHVoVfv6fBWiQ2Ei0XeNMOxGBDBAXd9ymhvAk64cYKUNJZbVPRAol+4aVxpwHtlQnzpYZGKbiWCXRowL1Jeri0JOyGaIbzRHSmyTN5F/xZt9LPSqLlAuflkyhzPW7DnPPBAHZiHBwUww0sH6WyzaaiXVvQeaaUT2JRE7EK1SArsRJ51oDA3qcl8a96aGwvrxGQjAcCximNRMsFTp+XyBWiDbloS2XtE0RLZ0R31IzmVu4WLcloJbSMpPn3LrWol6SMlj8WpZNlifY42VTMhov+Sjn9xNLJ+69CtQOTjy/mrhMt1aNJv1nR2r6D4SEvxaxvHCz6RhItH1zb0OvRpgYZRD5oo3OkQgplYrHdWO7d1onG+jmxpqBW3cVutQZ5N8qI8b2lugJZjNcqQmJzpfiwsFWG/OMP+P5bEdLeHsR4/WC8LkPc4e/j+OprlL8p47sam8s/I9EeOP7VMDnRpUOQbv87sFa0OL5Mvb5vrLl2S4R63MGTSizrcpBoeYCVOvtiiO6JDv1FF73XEzipSrogFm1Lhh5nOs+BdWlhMp2EMf1ziNFf08X7+8Sb0RDjt7fHrUsb7nW0HPtqwP3nDUZDNvfveI4FK/3/6dyGaRgwzi24S98UEi0XBD1d2JCzkpr0SfmCRHug+DMDGitZ2vOgbPFSVddhLzJMviDRHiSp377i2Jahna+qq/mARHug+KzfMf7Q0T5iJ9KTHsxZPktmDIlGZAKJRmQCiUZkAolGZADwL9tlMbPlRnvvAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" />
+                                          </scg:List>
+                                        </uix:TargetAnchorable.Anchors>
+                                      </uix:TargetAnchorable>
+                                    </uix:NClick.Target>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </uix:NClick>
+                                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ContinueOnError="False" DisplayName="Type Into 'المهارة'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="338,53.333333333333336" sap2010:WorkflowViewState.IdRef="NTypeInto_7" ScopeIdentifier="fb06fb35-3f6d-4178-b7cc-a16f1f7fffbb" Text="[item.ToString+ &quot;[k(enter)]&quot;]" Version="V3">
+                                    <uix:NTypeInto.Target>
+                                      <uix:TargetAnchorable BrowserURL="https://noor.moe.gov.sa/Noor/EduWaveSMS/TeacherMarksMenu.aspx?EKME-sZ-qgdJhYZtXdsecQ2=L7K9wbaeZ-U1" DesignTimeRectangle="885, 629, 361, 35" DesignTimeScaleFactor="1.5" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl tag='INPUT' type='search' /&gt;" FuzzyAccuracy="0.99" FuzzySelectorArgument="&lt;webctrl tag='INPUT' type='search' class='select2-search__field' aaname='' /&gt;" Guid="11980902-e8d4-46a9-bf0b-89f48350a1b6" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAW0AAAAnCAYAAADEtRmcAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAACySURBVHhe7dSxCcAwEMDA7D+Kl3QqG1Kkf8EdaAU9G4AM0wYIudNea0mShnZ8pg3APKYNEGLaACGmDRBi2gAhpg0QYtoAIaYNEGLaACGmDRBi2gAhpg0QYtoAIaYNEGLaACGmDRBi2gAhpg0QYtoAIaYNEGLaACGmDRBi2gAhpg0QYtoAIaYNEGLaACGmDRBi2gAhpg0QYtoAIaYNEGLaACG/05Ykzey40wZgPtMGyNj7Bf1yiW87R+iQAAAAAElFTkSuQmCC" InformativeScreenshot="2231ecf9101972f5679f9b13fa6948b5.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='EduWave - إدخال نتائج الطالبات على مستوى المادة والمهارة :: نظام نور' /&gt;" SearchSteps="FuzzySelector, Image" Version="V1" Visibility="Interactive">
+                                        <uix:TargetAnchorable.Anchors>
+                                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                            <uix:Target DesignTimeRectangle="1350, 967, 150, 26" ElementType="Text" FriendlyName="'المهارة'" FullSelectorArgument="&lt;webctrl aaname='المهارة' class='StandardFont' tag='SPAN' /&gt;" FuzzyAccuracy="0.98" FuzzySelectorArgument="&lt;webctrl aaname='المهارة' class='StandardFont' tag='SPAN' type='' check:innerText='المهارة' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAJoAAAAeCAYAAADU3gfZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAQ/SURBVHhe7ZnRa9tWFIf3T3oLgoAJeJSZgpZh4UV4sxiYPOghpVAHZsJwHryHqVARggfxwLgUF4yGp3SpTVBZEQSZgsAIAiLw25V0ZcmL4zotaBGcDw7Y11e6gvv5nHPtL0AQGUCiEZlAohGZQKIRmUCiEZlAohGZQKLlFNdooVQooLDThOHywczwMPlVRIGtL+z34Nzw0fHdz0Si/V/4LoxjGcWijPbIgvmigdK2iGbfhs+nrINEIzZjbqD1iG0K25jifhtNMXotNNjGbWDax0TzP9iwzg30TnXoJzq6fQMT29tI4o9DouWHGxfmcxVSVYU+tjE5a0KuKGi/dj4vo7H7Dp+WQglWhVBponvhfqZwJFoO8eHaFqx3Djy+YZtwd0bzYZ8qoQSligylrkRRk1AM5ochojXaTOjVkGg5ggk21qE+jjefhSCh1bduCzcbQC0GcyRol5Eea0vntQdvlUVzC72n5WitR+y6D3w8hffeQPdIhVIto7wro3GoYfjO45/GkGi5wRt3IAWbEoaAohC/LkL9/T8HgnuK5s9M6M/YQYPfv1Rj5fKcl8u5iXbYDwpQ+044P8KH86qJMr9mOSS0lxYh0fKBZ0HbizaxdNAD69GDQVhnaiRHUUXvKqXaPUTzrwZo8kPGckjoXLCFbjyYx5EkpZ+NJHv6Nro/CdH4fgeD8QQTo4dWhV+/p8FaJDYSLRd40w7EYEMEBd33KaG8CTrhxgpQ0lltU9ECiX7hpXGnAe2VCfOlhkYpuJYJdGjAvUl6uLQk7IZohvNEdKbJM3kX/Fm30s9KouUC5+WTKHM9bsOc88EAdmIcHBTDDSwfpbLNpqJdW9B5ppRPYlETsQrVICuxEnnWgMDepyXxr3pobC+vEZCMBwLGKY1EywVOn5fIFaINuWhLZe0TREtnRHfUjOZW7hYtyWgltIyk+fcutaiXpIyWPxalk2WJ9jjZVMyGi/5KOf3E0sn7r0K1A5OPL+auEy3Vo0m/WdHavoPhIS/FrG8cLPpGEi0fXNvQ69GmBhlEPmijc6RCCmVisd1Y7t3Wicb6ObGmoFbdxW61Bnk3yojxvaW6AlmM1ypCYnOl+LCwVYb84w/4/lsR0t4exHj9YLwuQ9zh7+P46muUvynjuxqbyz8j0R44/tUwOdGlQ5Bu/zuwVrQ4vky9vm+suXZLhHrcwZNKLOtykGh5gJU6+2KI7okO/UUXvdcTOKlKuiAWbUuGHmc6z4F1aWEynYQx/XOI0V/Txfv7xJvREOO3t8etSxvudbQc+2rA/ecNRkM29+94jgUr/f/p3IZpGDDOLbhL3xQSLRcEPV3YkLOSmvRJ+YJEe6D4MwMaK1na86Bs8VJV12EvMky+INEeJKnfvuLYlqGdr6qr+YBEe6D4rN8x/tDRPmIn0pMezFk+S2YMiUZkAolGZAKJRmQCiUZkAolGZADwL8v3MbPdSAh0AAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" />
+                                          </scg:List>
+                                        </uix:TargetAnchorable.Anchors>
+                                      </uix:TargetAnchorable>
+                                    </uix:NTypeInto.Target>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </uix:NTypeInto>
+                                  <uix:NClick ClickType="Single" DisplayName="Click 'ابحث'" sap:VirtualizedContainerService.HintSize="338,53.333333333333336" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="fb06fb35-3f6d-4178-b7cc-a16f1f7fffbb" Version="V3">
+                                    <uix:NClick.Target>
+                                      <uix:TargetAnchorable BrowserURL="https://noor.moe.gov.sa/Noor/EduWaveSMS/TeacherMarksMenu.aspx?EKME-sZ-qgdJhYZtXdsecQ2=L7K9wbaeZ-U1" DesignTimeRectangle="792, 723, 126, 38" DesignTimeScaleFactor="1.5" ElementType="Button" FriendlyName="'ابحث'" FullSelectorArgument="&lt;webctrl name='ctl00$PlaceHolderMain$ibtnS10' tag='INPUT' type='submit' /&gt;" FuzzyAccuracy="0.82" FuzzySelectorArgument="&lt;webctrl name='ctl00$PlaceHolderMain$ibtnS10' tag='INPUT' type='submit' class='btnstyle' aaname='ابحث' check:text='ابحث' /&gt;" Guid="1aa9b43f-dc06-46a3-bfbb-79823c158723" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAIIAAAAqCAYAAAB/TIN+AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAIJSURBVHhe7ZnNSgJRGIa9lW6ly+gWWnoLLYNuoNq5q2XkpkUQA1JMLWSGftAyMhSsBiR/4+2csW8wPdCELo5+7wMP6pwjzDiPxxksgBADQyApDIGkZCEUDveoQgWGoFyBIShXYAjKFRiCcgWGoFyBIShXYAjKFRiCcgWGoFyBISziXcd8cn2cVRxjK6LAEBaRIfjtbnsEfCU4PnePL02G4LfFxwTvvSZ2y+7xpckQPLVSw+sX0GtfoVCuIhqb529VbLrmLkOG4KmVBt7NsaQhnN+jZqJAEqch7H+Y54MGitn8ErYfWngdmJ8RYdhFEJ9iI5szpeukM4TVcz6EI5QSs62XIHiOUXqoIRrYT2KE4Prg13tTGcJ6OB+Cw6MbhHYV+ajOrwoMwXPDJnpm/6Nbx9iUuUIw7r+ZecMmdmbHGILfbtbt+v73ycgbwlajayaaW8/ZOw6G4LfFZt/s/fJCKFxPVpiwOrOdIfjtZEUwJy5yXOBNmTuEw6vJdULn5vd1AkPw3HKMmj2AcRdhevXvNvg0c4YdnNjXLy1ctubniGeJvaXsI6w3cNF6mmxv258MhuC1G0GMyK7n/2D88/gXI7s6ZDAEuqYKDCGn6R9Z9tsfusdXVYEh5JQh0LVWYAjKFRiCcgWGoFyBIShXYAjKFRiCcgWGoFyBIShXYAjKFRiCcoUsBKIZ4BsBjR0zLDBwPQAAAABJRU5ErkJggg==" InformativeScreenshot="4d19612bf5473591abeca9a8b0757ce1.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='EduWave - إدخال نتائج الطالبات على مستوى المادة والمهارة :: نظام نور' /&gt;" SearchSteps="FuzzySelector, Image" Version="V1" Visibility="Interactive">
+                                        <uix:TargetAnchorable.Anchors>
+                                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                            <uix:Target DesignTimeRectangle="645, 723, 129, 38" ElementType="Button" FriendlyName="'عودة'" FullSelectorArgument="&lt;webctrl name='ctl00$PlaceHolderMain$ibtnBack' tag='INPUT' type='submit' /&gt;" FuzzySelectorArgument="&lt;webctrl name='ctl00$PlaceHolderMain$ibtnBack' tag='INPUT' type='submit' class='btnstyle' aaname='عودة' check:text='عودة' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAIUAAAAqCAYAAACdkJgHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAMdSURBVHhe7ZjBahpRFIZ9FR+hy75CH6HbLrPMK3QpZJOlyc6dgVAIKQ1T2qSdIilagiiNYQIGx5pgVJCOxsjpvTNzTuY6o10Vcqf/Bx/EuWfuaOb3zrkWCIAVEAqQAqEAKSQUhf0d+J/LIBRQZBAKKDIIBRQZhAKKDEIBRQahgCKDUECRQSigyCAUUGQQCigyCAUUmXyE4sKnQH2GfvcDFWpdGqm/g9vv2bVwrQxCAUUGjw8oMvkIRfWYSv6ERsv4w8wn5DSPqZhVe+ZRfz6kiruXHhMrtPXTJ2++iCeMGPmnZh1f9zEuUATBgHadRI1FMjkIxSGVx/rmLah/51HlqkPOZBa+bl0epupfqkdNFJ4ZuRfpcT3f7lCfrwiG5Fy31Zw+9dVLMxR8XXV83KWDqzYd+APy7jv0xpjPHhnrQ1FsDcL3H/YTcpxv2IQq7816bfHTD6rP9Vkzcs7NFaPYHIT9yejXV3ohx5vU0scSoZDr3iSva7eM9aEo36s3v1RLdnVlrBE1n9511TzOnqgbrZf9357xzS4N9X9jQgdGmNKh2Pb1aqJC9S1ZZ7eM5aE4JUd/4+dd2l4dq7bJU0OpPiDhq+tJ+NnrrafVojzOmi8dijCMNKSyUWe3jOWh+EiOXg6yQvFZNZRqaFMoCvs1ch9U0bgpTWkYCrXylIy6dCi2evFKcZ6ss1vG+sdHtNxP6ejMPM6rQOty0y5jh97eqt4jEYLosbAgt5E8Lx2KcBcTH8vc5VgoY30o+ObQ45TqN3qn0Kaju2nYT1CgVhDuNc5q4VjKu/gbX4vruNdYzqjld+K6aPcRjNXuptejL73oXHeqL8K7nqc5d8/X9DHPXMb+UCiLbpvq03gbqVkuaHTfpq13ibrLcElZQyIUej61O3GT8xksVQw2s/mR9XxlchGKf2/G4yOHMgjFqtW9VI9Q/Nv2NicyCMWK23pX8TCVfkL6k0e1/cz4ISxPMgiF4R69bnTS/YlqMEsnWfX5kkEooMggFFBkEAooMggFFBmEAooMQgFFBqGAIoNQQJFBKKDIIBRQZCQUAEQQ/QF/IX3ZSf3p6wAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector, Image" />
+                                          </scg:List>
+                                        </uix:TargetAnchorable.Anchors>
+                                      </uix:TargetAnchorable>
+                                    </uix:NClick.Target>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </uix:NClick>
+                                </Sequence>
+                              </If.Else>
+                            </If>
+                          </Sequence>
+                        </TryCatch.Try>
+                        <TryCatch.Catches>
+                          <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="644,21.333333333333332" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ActivityAction x:TypeArguments="s:Exception">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                              </ActivityAction.Argument>
+                              <Sequence sap:VirtualizedContainerService.HintSize="400,669.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_49">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Warn" Message="[exception.Source+&quot;Error with click or type into activity&quot; +exception.Message]" />
+                                <uix:NClick ClickType="Single" DisplayName="Click 'المهارة'" sap:VirtualizedContainerService.HintSize="338,158.66666666666666" sap2010:WorkflowViewState.IdRef="NClick_6" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="fb06fb35-3f6d-4178-b7cc-a16f1f7fffbb" Version="V3">
+                                  <uix:NClick.Target>
+                                    <uix:TargetAnchorable BrowserURL="https://noor.moe.gov.sa/Noor/EduWaveSMS/TeacherMarksMenu.aspx?EKME-sZ-qgdJhYZtXdsecQ2=L7K9wbaeZ-U1" DesignTimeRectangle="888, 625, 12, 7" DesignTimeScaleFactor="1.5" FriendlyName="'B'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;span&amp;gt;span&amp;gt;span&amp;gt;span&amp;gt;b' idx='6' tag='B' /&gt;" FuzzyAccuracy="0.99" FuzzySelectorArgument="&lt;webctrl type='' class='' tag='B' aaname='' /&gt;" Guid="9caddfa5-cc66-4737-9dcc-41156ff954fe" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAYAAAB24g05AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAB5SURBVChTrZCBCcAgDAQ7vk7gAC7gAi7gAi7gAE7gly9UtEYR7MFDSPJPyIVD/gvw3kMptSXuvnQXOOdEQyvutHQBpRRYa0UjxRl3WoYf5JxhjBnM7HH2RXxiSgla62pmzZ6EGEBijDWA9YxpAAkhPFqxDNjhMAC4Aepjgs0mjWpCAAAAAElFTkSuQmCC" InformativeScreenshot="1378f0a731681b716b2e056c2baceb84.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='EduWave - إدخال نتائج الطالبات على مستوى المادة والمهارة :: نظام نور' /&gt;" SearchSteps="FuzzySelector, Image" Version="V1" Visibility="Interactive">
+                                      <uix:TargetAnchorable.Anchors>
+                                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                          <uix:Target DesignTimeRectangle="1350, 611, 150, 26" ElementType="Text" FriendlyName="'المهارة'" FullSelectorArgument="&lt;webctrl aaname='المهارة' class='StandardFont' tag='SPAN' /&gt;" FuzzyAccuracy="0.98" FuzzySelectorArgument="&lt;webctrl aaname='المهارة' class='StandardFont' tag='SPAN' type='' check:innerText='المهارة' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAJoAAAAeCAYAAADU3gfZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAQ/SURBVHhe7ZnRa9tWFIf3T3oLgoAJeJSZgpZh4UV4sxiYPOghpVAHZsJwHryHqVARggfxwLgUF4yGp3SpTVBZEQSZgsAIAiLw25V0ZcmL4zotaBGcDw7Y11e6gvv5nHPtL0AQGUCiEZlAohGZQKIRmUCiEZlAohGZQKLlFNdooVQooLDThOHywczwMPlVRIGtL+z34Nzw0fHdz0Si/V/4LoxjGcWijPbIgvmigdK2iGbfhs+nrINEIzZjbqD1iG0K25jifhtNMXotNNjGbWDax0TzP9iwzg30TnXoJzq6fQMT29tI4o9DouWHGxfmcxVSVYU+tjE5a0KuKGi/dj4vo7H7Dp+WQglWhVBponvhfqZwJFoO8eHaFqx3Djy+YZtwd0bzYZ8qoQSligylrkRRk1AM5ochojXaTOjVkGg5ggk21qE+jjefhSCh1bduCzcbQC0GcyRol5Eea0vntQdvlUVzC72n5WitR+y6D3w8hffeQPdIhVIto7wro3GoYfjO45/GkGi5wRt3IAWbEoaAohC/LkL9/T8HgnuK5s9M6M/YQYPfv1Rj5fKcl8u5iXbYDwpQ+044P8KH86qJMr9mOSS0lxYh0fKBZ0HbizaxdNAD69GDQVhnaiRHUUXvKqXaPUTzrwZo8kPGckjoXLCFbjyYx5EkpZ+NJHv6Nro/CdH4fgeD8QQTo4dWhV+/p8FaJDYSLRd40w7EYEMEBd33KaG8CTrhxgpQ0lltU9ECiX7hpXGnAe2VCfOlhkYpuJYJdGjAvUl6uLQk7IZohvNEdKbJM3kX/Fm30s9KouUC5+WTKHM9bsOc88EAdmIcHBTDDSwfpbLNpqJdW9B5ppRPYlETsQrVICuxEnnWgMDepyXxr3pobC+vEZCMBwLGKY1EywVOn5fIFaINuWhLZe0TREtnRHfUjOZW7hYtyWgltIyk+fcutaiXpIyWPxalk2WJ9jjZVMyGi/5KOf3E0sn7r0K1A5OPL+auEy3Vo0m/WdHavoPhIS/FrG8cLPpGEi0fXNvQ69GmBhlEPmijc6RCCmVisd1Y7t3Wicb6ObGmoFbdxW61Bnk3yojxvaW6AlmM1ypCYnOl+LCwVYb84w/4/lsR0t4exHj9YLwuQ9zh7+P46muUvynjuxqbyz8j0R44/tUwOdGlQ5Bu/zuwVrQ4vky9vm+suXZLhHrcwZNKLOtykGh5gJU6+2KI7okO/UUXvdcTOKlKuiAWbUuGHmc6z4F1aWEynYQx/XOI0V/Txfv7xJvREOO3t8etSxvudbQc+2rA/ecNRkM29+94jgUr/f/p3IZpGDDOLbhL3xQSLRcEPV3YkLOSmvRJ+YJEe6D4MwMaK1na86Bs8VJV12EvMky+INEeJKnfvuLYlqGdr6qr+YBEe6D4rN8x/tDRPmIn0pMezFk+S2YMiUZkAolGZAKJRmQCiUZkAolGZADwL8v3MbPdSAh0AAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" />
+                                        </scg:List>
+                                      </uix:TargetAnchorable.Anchors>
+                                    </uix:TargetAnchorable>
+                                  </uix:NClick.Target>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </uix:NClick>
+                                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'المهارة'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="338,53.333333333333336" sap2010:WorkflowViewState.IdRef="NTypeInto_6" ScopeIdentifier="fb06fb35-3f6d-4178-b7cc-a16f1f7fffbb" Text="[item.ToString+ &quot;[k(enter)]&quot;]" Version="V3">
+                                  <uix:NTypeInto.Target>
+                                    <uix:TargetAnchorable BrowserURL="https://noor.moe.gov.sa/Noor/EduWaveSMS/TeacherMarksMenu.aspx?EKME-sZ-qgdJhYZtXdsecQ2=L7K9wbaeZ-U1" DesignTimeRectangle="885, 629, 361, 35" DesignTimeScaleFactor="1.5" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl tag='INPUT' type='search' /&gt;" FuzzyAccuracy="0.99" FuzzySelectorArgument="&lt;webctrl tag='INPUT' type='search' class='select2-search__field' aaname='' /&gt;" Guid="11980902-e8d4-46a9-bf0b-89f48350a1b6" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAW0AAAAnCAYAAADEtRmcAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAACySURBVHhe7dSxCcAwEMDA7D+Kl3QqG1Kkf8EdaAU9G4AM0wYIudNea0mShnZ8pg3APKYNEGLaACGmDRBi2gAhpg0QYtoAIaYNEGLaACGmDRBi2gAhpg0QYtoAIaYNEGLaACGmDRBi2gAhpg0QYtoAIaYNEGLaACGmDRBi2gAhpg0QYtoAIaYNEGLaACGmDRBi2gAhpg0QYtoAIaYNEGLaACG/05Ykzey40wZgPtMGyNj7Bf1yiW87R+iQAAAAAElFTkSuQmCC" InformativeScreenshot="2231ecf9101972f5679f9b13fa6948b5.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='EduWave - إدخال نتائج الطالبات على مستوى المادة والمهارة :: نظام نور' /&gt;" SearchSteps="FuzzySelector, Image" Version="V1" Visibility="Interactive">
+                                      <uix:TargetAnchorable.Anchors>
+                                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                          <uix:Target DesignTimeRectangle="1350, 967, 150, 26" ElementType="Text" FriendlyName="'المهارة'" FullSelectorArgument="&lt;webctrl aaname='المهارة' class='StandardFont' tag='SPAN' /&gt;" FuzzyAccuracy="0.98" FuzzySelectorArgument="&lt;webctrl aaname='المهارة' class='StandardFont' tag='SPAN' type='' check:innerText='المهارة' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAJoAAAAeCAYAAADU3gfZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAQ/SURBVHhe7ZnRa9tWFIf3T3oLgoAJeJSZgpZh4UV4sxiYPOghpVAHZsJwHryHqVARggfxwLgUF4yGp3SpTVBZEQSZgsAIAiLw25V0ZcmL4zotaBGcDw7Y11e6gvv5nHPtL0AQGUCiEZlAohGZQKIRmUCiEZlAohGZQKLlFNdooVQooLDThOHywczwMPlVRIGtL+z34Nzw0fHdz0Si/V/4LoxjGcWijPbIgvmigdK2iGbfhs+nrINEIzZjbqD1iG0K25jifhtNMXotNNjGbWDax0TzP9iwzg30TnXoJzq6fQMT29tI4o9DouWHGxfmcxVSVYU+tjE5a0KuKGi/dj4vo7H7Dp+WQglWhVBponvhfqZwJFoO8eHaFqx3Djy+YZtwd0bzYZ8qoQSligylrkRRk1AM5ochojXaTOjVkGg5ggk21qE+jjefhSCh1bduCzcbQC0GcyRol5Eea0vntQdvlUVzC72n5WitR+y6D3w8hffeQPdIhVIto7wro3GoYfjO45/GkGi5wRt3IAWbEoaAohC/LkL9/T8HgnuK5s9M6M/YQYPfv1Rj5fKcl8u5iXbYDwpQ+044P8KH86qJMr9mOSS0lxYh0fKBZ0HbizaxdNAD69GDQVhnaiRHUUXvKqXaPUTzrwZo8kPGckjoXLCFbjyYx5EkpZ+NJHv6Nro/CdH4fgeD8QQTo4dWhV+/p8FaJDYSLRd40w7EYEMEBd33KaG8CTrhxgpQ0lltU9ECiX7hpXGnAe2VCfOlhkYpuJYJdGjAvUl6uLQk7IZohvNEdKbJM3kX/Fm30s9KouUC5+WTKHM9bsOc88EAdmIcHBTDDSwfpbLNpqJdW9B5ppRPYlETsQrVICuxEnnWgMDepyXxr3pobC+vEZCMBwLGKY1EywVOn5fIFaINuWhLZe0TREtnRHfUjOZW7hYtyWgltIyk+fcutaiXpIyWPxalk2WJ9jjZVMyGi/5KOf3E0sn7r0K1A5OPL+auEy3Vo0m/WdHavoPhIS/FrG8cLPpGEi0fXNvQ69GmBhlEPmijc6RCCmVisd1Y7t3Wicb6ObGmoFbdxW61Bnk3yojxvaW6AlmM1ypCYnOl+LCwVYb84w/4/lsR0t4exHj9YLwuQ9zh7+P46muUvynjuxqbyz8j0R44/tUwOdGlQ5Bu/zuwVrQ4vky9vm+suXZLhHrcwZNKLOtykGh5gJU6+2KI7okO/UUXvdcTOKlKuiAWbUuGHmc6z4F1aWEynYQx/XOI0V/Txfv7xJvREOO3t8etSxvudbQc+2rA/ecNRkM29+94jgUr/f/p3IZpGDDOLbhL3xQSLRcEPV3YkLOSmvRJ+YJEe6D4MwMaK1na86Bs8VJV12EvMky+INEeJKnfvuLYlqGdr6qr+YBEe6D4rN8x/tDRPmIn0pMezFk+S2YMiUZkAolGZAKJRmQCiUZkAolGZADwL8v3MbPdSAh0AAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" />
+                                        </scg:List>
+                                      </uix:TargetAnchorable.Anchors>
+                                    </uix:TargetAnchorable>
+                                  </uix:NTypeInto.Target>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </uix:NTypeInto>
+                              </Sequence>
+                            </ActivityAction>
+                          </Catch>
+                        </TryCatch.Catches>
+                      </TryCatch>
+                    </Sequence>
+                  </ActivityAction>
+                </ui:ForEach.Body>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:ForEach>
+              <ui:UiElementExists DisplayName="Element Exists 'TD'" Exists="[check]" sap:VirtualizedContainerService.HintSize="776.6666666666666,107.33333333333333" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
+                <ui:UiElementExists.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="16d658e1-b968-42ba-a1d1-d0d79ce237a9" InformativeScreenshot="10e9991db726b1ceca27a62f06ee2862" Selector="&lt;webctrl class='GridClass' tag='TABLE' /&gt;&lt;webctrl tableRow='4' tag='TD' /&gt;">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:UiElementExists.Target>
+              </ui:UiElementExists>
+              <If Condition="[check]" sap:VirtualizedContainerService.HintSize="776.6666666666666,923.3333333333334" sap2010:WorkflowViewState.IdRef="If_2">
+                <If.Then>
+                  <Sequence sap:VirtualizedContainerService.HintSize="400,164" sap2010:WorkflowViewState.IdRef="Sequence_52">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <uix:NGetText DisplayName="Get Text 'اسم الطالبة'" sap:VirtualizedContainerService.HintSize="338,53.333333333333336" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="fb06fb35-3f6d-4178-b7cc-a16f1f7fffbb" TextString="[StudentName]" Version="V3">
+                      <uix:NGetText.Target>
+                        <uix:TargetAnchorable BrowserURL="https://noor.moe.gov.sa/Noor/EduWaveSMS/TeacherMarksMenu.aspx?EKME-sZ-qgdJhYZtXdsecQ2=L7K9wbaeZ-U1" DesignTimeRectangle="1104, 806, 417, 61" DesignTimeScaleFactor="1.5" ElementType="Text" FriendlyName="'نوال مناور صنت الحربى'" FullSelectorArgument="&lt;webctrl class='GridClass' tag='TABLE' /&gt;&lt;webctrl tableRow='4' tag='TD' /&gt;" FuzzyAccuracy="0.94" FuzzySelectorArgument="&lt;webctrl class='GridClass' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='' /&gt;" Guid="dbc10715-4ba9-4ccd-9f16-f5ba6371168c" ImageBase64="" InformativeScreenshot="2f3a8f10a6ef5603fc3ca0808718df9f.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='EduWave - إدخال نتائج الطالبات على مستوى المادة والمهارة :: نظام نور' /&gt;" SearchSteps="FuzzySelector" Version="V1" Visibility="Interactive">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                              <uix:Target DesignTimeRectangle="1411, 731, 104, 38" ElementType="Text" FriendlyName="'اسم الطالبة'" FullSelectorArgument="&lt;webctrl class='GridClass' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl class='GridClass' tag='TABLE' /&gt;&lt;webctrl type='' tag='A' class='' aaname='اسم الطالبة' check:innerText='اسم الطالبة' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAGwAAAAqCAYAAABWZ768AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAOGSURBVHhe7Ze/T9tAFMf5R/gL+h+w8RcwdmNj69itW7dMqBtLyoKygISElKhSMzQKahQsQLLSItNUtWj5oVS4tpIQQhO93vnuwtl5puQH5gJv+Az++u787n3t83tzc+9XgZghUJEwF1QkzAUVCXNBRcJcUJEwF1QkzAUVCXNBRcJcUJEwF1QkzAUVCXNBRcJcUJEwF1RkvGlcgwvXUHQ2Ya5aB6vfA7flwEtkbBIZn82BNuSqum5DEZjedWFFGxtSdcFm9+yzUlQfBbmG69sRfeWszWLpQfFYG2sweO4YkQsNMuxxGdmwaUCGjQ8Z9rwMK0Gum5DkOyDDxmckw15UbMj5bXD4f4tvXoEk+a5ETG5YFpZqdSh2+P9UxtBrQ/HnHixtxeYqHsCw+U8VWPsdgK3y0W+DdXGQHMNIyHzE4r23YYvHDXD4Agyn1YCix/FEsKkaloWV00AkqBuIOPxg8BI5bIOL8fnaGlMzTBVc/JkyH2V+2twVw0hMYthHB8p8cs+DtcqGNjD5SHwow8SL04b8UQHm9TE7u5Dr8HV7kK9pumLKhr2W1XLe1vOxDWtNGcPXrKZLWOzYs0QMCfkYx7DlU7Epy92ODkrdsDrke6ylOI7HIamdh89E/3VTNawA61d8Dw3IxO8d/hIn0eVeVOekZVjioJQNc9kR5Hg2LMTvKz7IkyC2yZCpGib3jRmW8JyQdA0LYL2kDQhJ2TAeQzl2LwK+yZDnZJg4r7FzOWXDLg+i/60h0jIsC+8CuYdK9N7Cdy9czzopRPSQtAybZ/+G8FzuuPBqRxuUsmH/78PSMmwVlk5EpVr+sXmrb6kvT8Q69HJhhmlzHPZC3laXExjGq5+MJ3ue/jVYfqysZ/1HmV+3mrCvSlxZsTmqBbgKYD+c0wDrBnuoDFCtxfjc9MXcQCTV7XjiOhFW3vNxN7Lc93zYbcp7ao2JDWM94OEXyHlyva6KSeaCa6rcv2J68w9UVXwtkcNBThiDVoAVU9H15F7GM4yzAcuOG21Wh7iBOqpzurHrBMM0vv2NXo/DkUqiYkLDFpzbfnQIluxcjbUbWwV4eyEb6n4HH6vgH0DYbGdhuX4OljRwwPiGEZyMxxMW778MABUJ+YYj1eFjg4r3ZlP+89ibWEM6/hmGDJsxnqhhTxcybMYgw4jpgIqEuaAiYS6oSJgLKhLmgoqEuaAiYSir8A9D7t9mqCLf4AAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector, Image" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NGetText.Target>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uix:NGetText>
+                  </Sequence>
+                </If.Then>
+                <If.Else>
+                  <Sequence sap:VirtualizedContainerService.HintSize="400,578.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_53">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Warn" Message="[&quot;Get text element found ? &quot; + check.ToString]" />
+                    <uix:NClick ClickType="Single" DisplayName="Click 'المهارة'" sap:VirtualizedContainerService.HintSize="338,53.333333333333336" sap2010:WorkflowViewState.IdRef="NClick_8" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="fb06fb35-3f6d-4178-b7cc-a16f1f7fffbb" Version="V3">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable BrowserURL="https://noor.moe.gov.sa/Noor/EduWaveSMS/TeacherMarksMenu.aspx?EKME-sZ-qgdJhYZtXdsecQ2=L7K9wbaeZ-U1" DesignTimeRectangle="879, 739, 30, 35" DesignTimeScaleFactor="1.5" FriendlyName="'SPAN'" FullSelectorArgument="&lt;webctrl aria-role='presentation' css-selector='body&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;span&amp;gt;span&amp;gt;span&amp;gt;span' idx='6' tag='SPAN' /&gt;" FuzzyAccuracy="0.76" FuzzySelectorArgument="&lt;webctrl aria-role='presentation' type='' class='select2-selection__arrow' tag='SPAN' aaname='' /&gt;" Guid="ed691db6-d399-42cf-8373-33159447e637" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACIAAAAnCAYAAABqippxAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAACvSURBVFhH7dLBCQMhEIXhlO9WYAHePNmADdiADViAFThh9iDhZQ9RA3p4PwyICvux+JJDOgvivd8+HbI7QjBCMEIwQjBCMEKwIUiMUYwxP43eHWn4j4QQHj/8OXpntGFIa02cc48AHT3TO6NNvZFaq1hrvxC6p2czTT/WUopc19URuta92aYhWs65Q3S90hJESynds9oy5F8RghGCEYIRghGCdcjuuSEnRAh2CETkDZzuCUTg63pNAAAAAElFTkSuQmCC" InformativeScreenshot="681e94e26fa5eda435f80561a9208082.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='EduWave - إدخال نتائج الطالبات على مستوى المادة والمهارة :: نظام نور' /&gt;" SearchSteps="FuzzySelector, Image" Version="V1" Visibility="Interactive">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                              <uix:Target DesignTimeRectangle="1350, 738, 150, 26" ElementType="Text" FriendlyName="'المهارة'" FullSelectorArgument="&lt;webctrl aaname='المهارة' class='StandardFont' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='المهارة' class='StandardFont' tag='SPAN' type='' check:innerText='المهارة' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAJoAAAAeCAYAAADU3gfZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAQ/SURBVHhe7ZnRa9tWFIf3T3oLgoAJeJSZgpZh4UV4sxiYPOghpVAHZsJwHryHqVARggfxwLgUF4yGp3SpTVBZEQSZgsAIAiLw25V0ZcmL4zotaBGcDw7Y11e6gvv5nHPtL0AQGUCiEZlAohGZQKIRmUCiEZlAohGZQKIRmUCi5RTXaKFUKKCw04Th8sHM8DD5VUSBrS/s9+Dc8NHx3c9Eov1f+C6MYxnFooz2yIL5ooHStohm34bPp6yDRCM2Y26g9YhtCtuY4n4bTTF6LTTYxm1g2sdE8z/YsM4N9E516Cc6un0DE9vbSOKPQ6LlhxsX5nMVUlWFPrYxOWtCrihov3Y+L6Ox+w6flkIJVoVQaaJ74X6mcCRaDvHh2hasdw48vmGbcHdG82GfKqEEpYoMpa5EUZNQDOaHIaI12kzo1ZBoOYIJNtahPo43n4UgodW3bgs3G0AtBnMkaJeRHmtL57UHb5VFcwu9p+VorUfsug98PIX33kD3SIVSLaO8K6NxqGH4zuOfxpBoucEbdyAFmxKGgKIQvy5C/f0/B4J7iubPTOjP2EGD379UY+XynJfLuYl22A8KUPtOOD/Ch/OqiTK/ZjkktJcWIdHygWdB24s2sXTQA+vRg0FYZ2okR1FF7yql2j1E868GaPJDxnJI6FywhW48mMeRJKWfjSR7+ja6PwnR+H4Hg/EEE6OHVoVfv6fBWiQ2Ei0XeNMOxGBDBAXd9ymhvAk64cYKUNJZbVPRAol+4aVxpwHtlQnzpYZGKbiWCXRowL1Jeri0JOyGaIbzRHSmyTN5F/xZt9LPSqLlAuflkyhzPW7DnPPBAHZiHBwUww0sH6WyzaaiXVvQeaaUT2JRE7EK1SArsRJ51oDA3qcl8a96aGwvrxGQjAcCximNRMsFTp+XyBWiDbloS2XtE0RLZ0R31IzmVu4WLcloJbSMpPn3LrWol6SMlj8WpZNlifY42VTMhov+Sjn9xNLJ+69CtQOTjy/mrhMt1aNJv1nR2r6D4SEvxaxvHCz6RhItH1zb0OvRpgYZRD5oo3OkQgplYrHdWO7d1onG+jmxpqBW3cVutQZ5N8qI8b2lugJZjNcqQmJzpfiwsFWG/OMP+P5bEdLeHsR4/WC8LkPc4e/j+OprlL8p47sam8s/I9EeOP7VMDnRpUOQbv87sFa0OL5Mvb5vrLl2S4R63MGTSizrcpBoeYCVOvtiiO6JDv1FF73XEzipSrogFm1Lhh5nOs+BdWlhMp2EMf1ziNFf08X7+8Sb0RDjt7fHrUsb7nW0HPtqwP3nDUZDNvfveI4FK/3/6dyGaRgwzi24S98UEi0XBD1d2JCzkpr0SfmCRHug+DMDGitZ2vOgbPFSVddhLzJMviDRHiSp377i2Jahna+qq/mARHug+KzfMf7Q0T5iJ9KTHsxZPktmDIlGZAKJRmQCiUZkAolGZADwL9tlMbPlRnvvAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NClick.Target>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uix:NClick>
+                    <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ContinueOnError="False" DisplayName="Type Into 'المهارة'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="338,53.333333333333336" sap2010:WorkflowViewState.IdRef="NTypeInto_8" ScopeIdentifier="fb06fb35-3f6d-4178-b7cc-a16f1f7fffbb" Text="[&quot;تقليم&quot;+ &quot;[k(enter)]&quot;]" Version="V3">
+                      <uix:NTypeInto.Target>
+                        <uix:TargetAnchorable BrowserURL="https://noor.moe.gov.sa/Noor/EduWaveSMS/TeacherMarksMenu.aspx?EKME-sZ-qgdJhYZtXdsecQ2=L7K9wbaeZ-U1" DesignTimeRectangle="885, 629, 361, 35" DesignTimeScaleFactor="1.5" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl tag='INPUT' type='search' /&gt;" FuzzyAccuracy="0.99" FuzzySelectorArgument="&lt;webctrl tag='INPUT' type='search' class='select2-search__field' aaname='' /&gt;" Guid="11980902-e8d4-46a9-bf0b-89f48350a1b6" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAW0AAAAnCAYAAADEtRmcAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAACySURBVHhe7dSxCcAwEMDA7D+Kl3QqG1Kkf8EdaAU9G4AM0wYIudNea0mShnZ8pg3APKYNEGLaACGmDRBi2gAhpg0QYtoAIaYNEGLaACGmDRBi2gAhpg0QYtoAIaYNEGLaACGmDRBi2gAhpg0QYtoAIaYNEGLaACGmDRBi2gAhpg0QYtoAIaYNEGLaACGmDRBi2gAhpg0QYtoAIaYNEGLaACG/05Ykzey40wZgPtMGyNj7Bf1yiW87R+iQAAAAAElFTkSuQmCC" InformativeScreenshot="2231ecf9101972f5679f9b13fa6948b5.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='EduWave - إدخال نتائج الطالبات على مستوى المادة والمهارة :: نظام نور' /&gt;" SearchSteps="FuzzySelector, Image" Version="V1" Visibility="Interactive">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                              <uix:Target DesignTimeRectangle="1350, 967, 150, 26" ElementType="Text" FriendlyName="'المهارة'" FullSelectorArgument="&lt;webctrl aaname='المهارة' class='StandardFont' tag='SPAN' /&gt;" FuzzyAccuracy="0.98" FuzzySelectorArgument="&lt;webctrl aaname='المهارة' class='StandardFont' tag='SPAN' type='' check:innerText='المهارة' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAJoAAAAeCAYAAADU3gfZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAQ/SURBVHhe7ZnRa9tWFIf3T3oLgoAJeJSZgpZh4UV4sxiYPOghpVAHZsJwHryHqVARggfxwLgUF4yGp3SpTVBZEQSZgsAIAiLw25V0ZcmL4zotaBGcDw7Y11e6gvv5nHPtL0AQGUCiEZlAohGZQKIRmUCiEZlAohGZQKLlFNdooVQooLDThOHywczwMPlVRIGtL+z34Nzw0fHdz0Si/V/4LoxjGcWijPbIgvmigdK2iGbfhs+nrINEIzZjbqD1iG0K25jifhtNMXotNNjGbWDax0TzP9iwzg30TnXoJzq6fQMT29tI4o9DouWHGxfmcxVSVYU+tjE5a0KuKGi/dj4vo7H7Dp+WQglWhVBponvhfqZwJFoO8eHaFqx3Djy+YZtwd0bzYZ8qoQSligylrkRRk1AM5ochojXaTOjVkGg5ggk21qE+jjefhSCh1bduCzcbQC0GcyRol5Eea0vntQdvlUVzC72n5WitR+y6D3w8hffeQPdIhVIto7wro3GoYfjO45/GkGi5wRt3IAWbEoaAohC/LkL9/T8HgnuK5s9M6M/YQYPfv1Rj5fKcl8u5iXbYDwpQ+044P8KH86qJMr9mOSS0lxYh0fKBZ0HbizaxdNAD69GDQVhnaiRHUUXvKqXaPUTzrwZo8kPGckjoXLCFbjyYx5EkpZ+NJHv6Nro/CdH4fgeD8QQTo4dWhV+/p8FaJDYSLRd40w7EYEMEBd33KaG8CTrhxgpQ0lltU9ECiX7hpXGnAe2VCfOlhkYpuJYJdGjAvUl6uLQk7IZohvNEdKbJM3kX/Fm30s9KouUC5+WTKHM9bsOc88EAdmIcHBTDDSwfpbLNpqJdW9B5ppRPYlETsQrVICuxEnnWgMDepyXxr3pobC+vEZCMBwLGKY1EywVOn5fIFaINuWhLZe0TREtnRHfUjOZW7hYtyWgltIyk+fcutaiXpIyWPxalk2WJ9jjZVMyGi/5KOf3E0sn7r0K1A5OPL+auEy3Vo0m/WdHavoPhIS/FrG8cLPpGEi0fXNvQ69GmBhlEPmijc6RCCmVisd1Y7t3Wicb6ObGmoFbdxW61Bnk3yojxvaW6AlmM1ypCYnOl+LCwVYb84w/4/lsR0t4exHj9YLwuQ9zh7+P46muUvynjuxqbyz8j0R44/tUwOdGlQ5Bu/zuwVrQ4vky9vm+suXZLhHrcwZNKLOtykGh5gJU6+2KI7okO/UUXvdcTOKlKuiAWbUuGHmc6z4F1aWEynYQx/XOI0V/Txfv7xJvREOO3t8etSxvudbQc+2rA/ecNRkM29+94jgUr/f/p3IZpGDDOLbhL3xQSLRcEPV3YkLOSmvRJ+YJEe6D4MwMaK1na86Bs8VJV12EvMky+INEeJKnfvuLYlqGdr6qr+YBEe6D4rN8x/tDRPmIn0pMezFk+S2YMiUZkAolGZAKJRmQCiUZkAolGZADwL8v3MbPdSAh0AAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NTypeInto.Target>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uix:NTypeInto>
+                    <uix:NClick ClickType="Single" DisplayName="Click 'ابحث'" sap:VirtualizedContainerService.HintSize="338,53.333333333333336" sap2010:WorkflowViewState.IdRef="NClick_9" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="fb06fb35-3f6d-4178-b7cc-a16f1f7fffbb" Version="V3">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable BrowserURL="https://noor.moe.gov.sa/Noor/EduWaveSMS/TeacherMarksMenu.aspx?EKME-sZ-qgdJhYZtXdsecQ2=L7K9wbaeZ-U1" DesignTimeRectangle="792, 723, 126, 38" DesignTimeScaleFactor="1.5" ElementType="Button" FriendlyName="'ابحث'" FullSelectorArgument="&lt;webctrl name='ctl00$PlaceHolderMain$ibtnS10' tag='INPUT' type='submit' /&gt;" FuzzyAccuracy="0.82" FuzzySelectorArgument="&lt;webctrl name='ctl00$PlaceHolderMain$ibtnS10' tag='INPUT' type='submit' class='btnstyle' aaname='ابحث' check:text='ابحث' /&gt;" Guid="1aa9b43f-dc06-46a3-bfbb-79823c158723" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAIIAAAAqCAYAAAB/TIN+AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAIJSURBVHhe7ZnNSgJRGIa9lW6ly+gWWnoLLYNuoNq5q2XkpkUQA1JMLWSGftAyMhSsBiR/4+2csW8wPdCELo5+7wMP6pwjzDiPxxksgBADQyApDIGkZCEUDveoQgWGoFyBIShXYAjKFRiCcgWGoFyBIShXYAjKFRiCcgWGoFyBISziXcd8cn2cVRxjK6LAEBaRIfjtbnsEfCU4PnePL02G4LfFxwTvvSZ2y+7xpckQPLVSw+sX0GtfoVCuIhqb529VbLrmLkOG4KmVBt7NsaQhnN+jZqJAEqch7H+Y54MGitn8ErYfWngdmJ8RYdhFEJ9iI5szpeukM4TVcz6EI5QSs62XIHiOUXqoIRrYT2KE4Prg13tTGcJ6OB+Cw6MbhHYV+ajOrwoMwXPDJnpm/6Nbx9iUuUIw7r+ZecMmdmbHGILfbtbt+v73ycgbwlajayaaW8/ZOw6G4LfFZt/s/fJCKFxPVpiwOrOdIfjtZEUwJy5yXOBNmTuEw6vJdULn5vd1AkPw3HKMmj2AcRdhevXvNvg0c4YdnNjXLy1ctubniGeJvaXsI6w3cNF6mmxv258MhuC1G0GMyK7n/2D88/gXI7s6ZDAEuqYKDCGn6R9Z9tsfusdXVYEh5JQh0LVWYAjKFRiCcgWGoFyBIShXYAjKFRiCcgWGoFyBIShXYAjKFRiCcoUsBKIZ4BsBjR0zLDBwPQAAAABJRU5ErkJggg==" InformativeScreenshot="4d19612bf5473591abeca9a8b0757ce1.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='EduWave - إدخال نتائج الطالبات على مستوى المادة والمهارة :: نظام نور' /&gt;" SearchSteps="FuzzySelector, Image" Version="V1" Visibility="Interactive">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                              <uix:Target DesignTimeRectangle="645, 723, 129, 38" ElementType="Button" FriendlyName="'عودة'" FullSelectorArgument="&lt;webctrl name='ctl00$PlaceHolderMain$ibtnBack' tag='INPUT' type='submit' /&gt;" FuzzySelectorArgument="&lt;webctrl name='ctl00$PlaceHolderMain$ibtnBack' tag='INPUT' type='submit' class='btnstyle' aaname='عودة' check:text='عودة' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAIUAAAAqCAYAAACdkJgHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAMdSURBVHhe7ZjBahpRFIZ9FR+hy75CH6HbLrPMK3QpZJOlyc6dgVAIKQ1T2qSdIilagiiNYQIGx5pgVJCOxsjpvTNzTuY6o10Vcqf/Bx/EuWfuaOb3zrkWCIAVEAqQAqEAKSQUhf0d+J/LIBRQZBAKKDIIBRQZhAKKDEIBRQahgCKDUECRQSigyCAUUGQQCigyCAUUmXyE4sKnQH2GfvcDFWpdGqm/g9vv2bVwrQxCAUUGjw8oMvkIRfWYSv6ERsv4w8wn5DSPqZhVe+ZRfz6kiruXHhMrtPXTJ2++iCeMGPmnZh1f9zEuUATBgHadRI1FMjkIxSGVx/rmLah/51HlqkPOZBa+bl0epupfqkdNFJ4ZuRfpcT3f7lCfrwiG5Fy31Zw+9dVLMxR8XXV83KWDqzYd+APy7jv0xpjPHhnrQ1FsDcL3H/YTcpxv2IQq7816bfHTD6rP9Vkzcs7NFaPYHIT9yejXV3ohx5vU0scSoZDr3iSva7eM9aEo36s3v1RLdnVlrBE1n9511TzOnqgbrZf9357xzS4N9X9jQgdGmNKh2Pb1aqJC9S1ZZ7eM5aE4JUd/4+dd2l4dq7bJU0OpPiDhq+tJ+NnrrafVojzOmi8dijCMNKSyUWe3jOWh+EiOXg6yQvFZNZRqaFMoCvs1ch9U0bgpTWkYCrXylIy6dCi2evFKcZ6ss1vG+sdHtNxP6ejMPM6rQOty0y5jh97eqt4jEYLosbAgt5E8Lx2KcBcTH8vc5VgoY30o+ObQ45TqN3qn0Kaju2nYT1CgVhDuNc5q4VjKu/gbX4vruNdYzqjld+K6aPcRjNXuptejL73oXHeqL8K7nqc5d8/X9DHPXMb+UCiLbpvq03gbqVkuaHTfpq13ibrLcElZQyIUej61O3GT8xksVQw2s/mR9XxlchGKf2/G4yOHMgjFqtW9VI9Q/Nv2NicyCMWK23pX8TCVfkL6k0e1/cz4ISxPMgiF4R69bnTS/YlqMEsnWfX5kkEooMggFFBkEAooMggFFBmEAooMQgFFBqGAIoNQQJFBKKDIIBRQZCQUAEQQ/QF/IX3ZSf3p6wAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector, Image" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NClick.Target>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uix:NClick>
+                    <uix:NGetText DisplayName="Get Text 'اسم الطالبة'" sap:VirtualizedContainerService.HintSize="338,53.333333333333336" sap2010:WorkflowViewState.IdRef="NGetText_2" ScopeIdentifier="fb06fb35-3f6d-4178-b7cc-a16f1f7fffbb" TextString="[StudentName]" Version="V3">
+                      <uix:NGetText.Target>
+                        <uix:TargetAnchorable BrowserURL="https://noor.moe.gov.sa/Noor/EduWaveSMS/TeacherMarksMenu.aspx?EKME-sZ-qgdJhYZtXdsecQ2=L7K9wbaeZ-U1" DesignTimeRectangle="1104, 806, 417, 61" DesignTimeScaleFactor="1.5" ElementType="Text" FriendlyName="'نوال مناور صنت الحربى'" FullSelectorArgument="&lt;webctrl class='GridClass' tag='TABLE' /&gt;&lt;webctrl tableRow='4' tag='TD' /&gt;" FuzzyAccuracy="0.94" FuzzySelectorArgument="&lt;webctrl class='GridClass' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='' /&gt;" Guid="dbc10715-4ba9-4ccd-9f16-f5ba6371168c" ImageBase64="" InformativeScreenshot="2f3a8f10a6ef5603fc3ca0808718df9f.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='EduWave - إدخال نتائج الطالبات على مستوى المادة والمهارة :: نظام نور' /&gt;" SearchSteps="FuzzySelector" Version="V1" Visibility="Interactive">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                              <uix:Target DesignTimeRectangle="1411, 731, 104, 38" ElementType="Text" FriendlyName="'اسم الطالبة'" FullSelectorArgument="&lt;webctrl class='GridClass' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl class='GridClass' tag='TABLE' /&gt;&lt;webctrl type='' tag='A' class='' aaname='اسم الطالبة' check:innerText='اسم الطالبة' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAGwAAAAqCAYAAABWZ768AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAOGSURBVHhe7Ze/T9tAFMf5R/gL+h+w8RcwdmNj69itW7dMqBtLyoKygISElKhSMzQKahQsQLLSItNUtWj5oVS4tpIQQhO93vnuwtl5puQH5gJv+Az++u787n3t83tzc+9XgZghUJEwF1QkzAUVCXNBRcJcUJEwF1QkzAUVCXNBRcJcUJEwF1QkzAUVCXNBRcJcUJEwF1RkvGlcgwvXUHQ2Ya5aB6vfA7flwEtkbBIZn82BNuSqum5DEZjedWFFGxtSdcFm9+yzUlQfBbmG69sRfeWszWLpQfFYG2sweO4YkQsNMuxxGdmwaUCGjQ8Z9rwMK0Gum5DkOyDDxmckw15UbMj5bXD4f4tvXoEk+a5ETG5YFpZqdSh2+P9UxtBrQ/HnHixtxeYqHsCw+U8VWPsdgK3y0W+DdXGQHMNIyHzE4r23YYvHDXD4Agyn1YCix/FEsKkaloWV00AkqBuIOPxg8BI5bIOL8fnaGlMzTBVc/JkyH2V+2twVw0hMYthHB8p8cs+DtcqGNjD5SHwow8SL04b8UQHm9TE7u5Dr8HV7kK9pumLKhr2W1XLe1vOxDWtNGcPXrKZLWOzYs0QMCfkYx7DlU7Epy92ODkrdsDrke6ylOI7HIamdh89E/3VTNawA61d8Dw3IxO8d/hIn0eVeVOekZVjioJQNc9kR5Hg2LMTvKz7IkyC2yZCpGib3jRmW8JyQdA0LYL2kDQhJ2TAeQzl2LwK+yZDnZJg4r7FzOWXDLg+i/60h0jIsC+8CuYdK9N7Cdy9czzopRPSQtAybZ/+G8FzuuPBqRxuUsmH/78PSMmwVlk5EpVr+sXmrb6kvT8Q69HJhhmlzHPZC3laXExjGq5+MJ3ue/jVYfqysZ/1HmV+3mrCvSlxZsTmqBbgKYD+c0wDrBnuoDFCtxfjc9MXcQCTV7XjiOhFW3vNxN7Lc93zYbcp7ao2JDWM94OEXyHlyva6KSeaCa6rcv2J68w9UVXwtkcNBThiDVoAVU9H15F7GM4yzAcuOG21Wh7iBOqpzurHrBMM0vv2NXo/DkUqiYkLDFpzbfnQIluxcjbUbWwV4eyEb6n4HH6vgH0DYbGdhuX4OljRwwPiGEZyMxxMW778MABUJ+YYj1eFjg4r3ZlP+89ibWEM6/hmGDJsxnqhhTxcybMYgw4jpgIqEuaAiYS6oSJgLKhLmgoqEuaAiYSir8A9D7t9mqCLf4AAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector, Image" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NGetText.Target>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uix:NGetText>
+                  </Sequence>
+                </If.Else>
+              </If>
+              <uix:NNavigateBrowser Action="Refresh" DisplayName="Navigate Browser - Refresh" sap:VirtualizedContainerService.HintSize="776.6666666666666,84" sap2010:WorkflowViewState.IdRef="NNavigateBrowser_1" Version="V3" />
+              <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey 'Chrome_RenderWidgetHost...'" sap:VirtualizedContainerService.HintSize="776.6666666666666,158.66666666666666" sap2010:WorkflowViewState.IdRef="SendHotkey_1" Key="enter" KeyModifiers="None" SpecialKey="True">
+                <ui:SendHotkey.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="cee3e572-0578-4431-9067-599538a40ccb" InformativeScreenshot="02f319de8913da6fb3b472254f8bf8b0" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='‫EduWave - إدخال نتائج الطالبات على مستوى المادة والمهارة :: نظا*' /&gt;&lt;wnd aaname='الأفقي' cls='Chrome_RenderWidgetHostHWND' title='Chrome Legacy Window' /&gt;">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:SendHotkey.Target>
+              </ui:SendHotkey>
+              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="776.6666666666666,53.333333333333336" sap2010:WorkflowViewState.IdRef="CommentOut_15">
+                <ui:CommentOut.Body>
+                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,218" sap2010:WorkflowViewState.IdRef="Sequence_48">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'INPUT  ctl00_PlaceHolde...'" sap:VirtualizedContainerService.HintSize="338,107.33333333333333" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+                      <ui:Click.CursorPosition>
+                        <ui:CursorPosition Position="Center">
+                          <ui:CursorPosition.OffsetX>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:CursorPosition.OffsetX>
+                          <ui:CursorPosition.OffsetY>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:CursorPosition.OffsetY>
+                        </ui:CursorPosition>
+                      </ui:Click.CursorPosition>
+                      <ui:Click.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b61ede99-1be8-4281-9922-1a134ed01ec4" InformativeScreenshot="15e4c4fcb20031c261178727d6d392c7" Selector="&lt;webctrl name='ctl00$PlaceHolderMain$ibtnBack' tag='INPUT' type='submit' /&gt;">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:Click.Target>
+                    </ui:Click>
+                  </Sequence>
+                </ui:CommentOut.Body>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:CommentOut>
+            </Sequence>
+          </ActivityAction>
+        </uix:NApplicationCard.Body>
+        <uix:NApplicationCard.TargetApp>
+          <uix:TargetApp Area="0, 0, 0, 0" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACsAAAAnCAYAAACWn7G7AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAbCSURBVFhH3ZiJT1RXFMZthSqDIMwAso7AMAvWtMbGmLRNGhO7xqppNdVo27RxSdRWkUVKNxMVt0BBAQMiSw11aeqGWrVWG3Hfa6S0amsr7oS26h9gzw/fIY9xoIC4tDf5Mu+ec+6537333HPem27/x/aY4HGBn8Df+KWP/JFqEPI/V+AY01jhOXVjZfLt6+Wezfuz4z0ih/RDI8zEZtD8auban4ekGY0V7gsr3g+LFn33O2YPtnXf81Fk+KVS14Q/ipJGS5/j5qgDzhYk5XiTBfvmxo8Q/ROCB7q7TaQayt17lUh9iXOByHoIgmrzHPlmkortn9hHMc4Y78diT+YkuuSZhbLj92UROA4xE7la6jogsiAwdnDgU42Vnltm/YVi51HREQaBu2dHexoq3DWq+6vS8zcxLrr7sutcFOupXMdSnXDnZ/bJIgsWWAR90kbYhsoObzlf5DxxYH7C8pEDLc+IPAybhnLXaR1nBrEuena5SwmzsxCzpw63vvj6AMsgeW7aNQEL6SWIFCQJ3IIEQbggePfsuJG+iIL6YtdasWGxhEmXNVbOkfUWRAjYMUJAdwXCxCb6UAEL6ykIPLYoMcUXUXB5ueuQMabLM0bTJRFA2vuC8IseGTaqsywYH/GsL6LgyALHPLFhcV1OtqMNsuxu1KncpCpvopdK3We4mKLnhB46WRonECJIXJMSk3r6C8dWLuCu2fG5RtwTUqQ/PRXAs55Yp5v5qDsCyFgFdgE5ljLMBYQol8u/Ns85uLEieQ/gWWSM63SDqL8tfds8W9qWbFtq9fw2gU361nnWD9a/JOM0zskc7DIxytETIk2LOZCdMPzGyn4SHv1u84xM0OndxWlQeNbu2x2BbWb1QhkHKU7E1wVEZqHSKVmj6t1TOiP2wpVEWObOW7aUTceEzNFWkbrlcMiUqukyrq2JkQdWZ8a9pWR5RmboOtU4xigla52x4YT0Bwr6C/r5gMYlhSFA0CbZjbPixihZnpEZuk41yEYrWXZV+lQrqhaEvEHRIDbZVY5d4w8CftvT+kT8WugiGxAivX2Q1YJDuDDGHL8aPuhU36K1JDtz8xHpQ5Rdw6kvQNI8Ufe1U8Ijr5Z6JOfeIQZ+X+YqqZoe847216fHjRVbq2SGGrJDfbFzkvR1wcAPmWYP6Wvqa26+yLKDkGpPw5nleplnn5mo4kKx+4g+f50aO05so7X/W5F7sfTZFHyAAGSqlz7lmsU0t3shy270qMtzTNMJfsp3bh7i6fnC1FdCX6vLd1arHKyZGTte7BNMtnnS511DyQYjU730ydcteHQkDDQ14VjjK+hiiWcHzi+Ves5InzJLzDsE/a+Vea7o5KtmxLyNTvtSqpdKn/ysMRqCTPXSjxLAr7m1IBuW+f1NW9rWg7aM7fvCMnbsbYFZ39VIattjm7pKKxHkbabJq6RPNYMAsP+Y4/hK9QZZp8n+38jyqto62fYgdGLlMGPcE4UTIwep8+rMvtNEZhNwCujDdn3eN0v1XU42LGPb1ZAJK0pDJ1UU34XJXy4Lnbp6iWVYFnmYm9rz24/to9W5cYGIQZ08GJnqu5ysURQGCPgqcHqBOIwRcEsZZzFXKCOP8mWhF6aXOc92OVmjKFChSP44MgOSkGFXcd5WhQIt9F1P9k426CPQNydvQEIzwSNBtj15FjKW7HERz6nzg9kJaSIzh0HQ8UWOOap/mGTZXXY/trEy+RbOzxQ4y6WvH4lNk8t7wjqd3CCbdL3cc5m+F1nSoPViifuw2ku/XWTb827ABIyNPF/k3oXzhnLPxfRXe3MJmzJFysvBSX9WJt/QyY0KllhvlOArKzx10udu4CfgmzT7ULUFImubbJtFQSHFQfSFMo4FWc0vK9fKkmtPLk4aD3jWXQdGaos/W+DaoLK6fFfuoezEYbVSss0LA/AS3EW2+X22vZDPoP0yjte9pj9Ifl7i3GSeSCEXbI6WXOOtKybrjbAh3nZAyN78dFRE88LhJWhBlmON4PhtKRuPk2f5bfpaaA1ia52+rkzGEZ8BAqpW0uGFjmKNx8ulnl82ZNg/FPkAic0qjn51ShzfbdjGVkyLfu9cofsHJUYo5bwb9abonmbhxK483/UiQ/wxKTU9WcAXAniyFfC1QIFg1dx8xnPRiD3yM3rGU1TiBXGCvoJYAURJbcxHccFG58MnttjBhRDADv/NjRTDheA4cUYmaAuQ4vMbohyR5lz1gZ4dwRd97AgX/eplcnYL0vjBFqhP5NjyjE98t2gINH3ojW8L2GEPUW08I/O2Ud/6jJ0u0Dwfz8i87f9rrVu3fwCOC8UfGfk87QAAAABJRU5ErkJggg==" InformativeScreenshot="ac2a3be9dc727139688b3d505b7183f8.jpg" Selector="&lt;html app='chrome.exe' title='EduWave - إدخال نتائج الطالبات على مستوى المادة والمهارة :: نظام نور' /&gt;" Url="https://noor.moe.gov.sa/Noor/EduWaveSMS/TeacherMarksMenu.aspx?EKME-sZ-qgdJhYZtXdsecQ2=L7K9wbaeZ-U1" />
+        </uix:NApplicationCard.TargetApp>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </uix:NApplicationCard>
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="872.6666666666666,94.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[StudentName]" />
+      <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Write student name in excel file" sap:VirtualizedContainerService.HintSize="872.6666666666666,53.333333333333336" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_3">
+        <ueab:ExcelProcessScopeX.Body>
+          <ActivityAction x:TypeArguments="ui:IExcelProcess">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="592,193.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_47">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="434,82.66666666666667" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_3" ResizeWindow="None" WorkbookPath="Data\Result.xlsx">
+                <ueab:ExcelApplicationCard.Body>
+                  <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="496,272" sap2010:WorkflowViewState.IdRef="Sequence_46">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ueab:WriteCellX Cell="[Excel.Sheet(&quot;Report4Skill&quot;).Cell(&quot;A2&quot;)]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="434,161.33333333333334" sap2010:WorkflowViewState.IdRef="WriteCellX_2" Value="[StudentName]" />
+                    </Sequence>
+                  </ActivityAction>
+                </ueab:ExcelApplicationCard.Body>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ueab:ExcelApplicationCard>
+            </Sequence>
+          </ActivityAction>
+        </ueab:ExcelProcessScopeX.Body>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ueab:ExcelProcessScopeX>
+    </Sequence>
+  </Sequence>
+</Activity>
