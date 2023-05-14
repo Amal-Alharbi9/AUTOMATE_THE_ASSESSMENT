@@ -6,7 +6,7 @@ I worked to automate a kind of education manual process using popular RPA softwa
 The teacher collects the grades of the students and evaluates them based on their skills during the semester.
 
 
-# Benefits of automating this process:
+## Benefits of automating this process:
 
  1- Teacher can concentrate on devoting their valuable time to perform more productive and strategic tasks.
 
@@ -15,7 +15,7 @@ The teacher collects the grades of the students and evaluates them based on thei
  3- Saving teachers' time.
 
 
-# One of the pictures shows the As Is process (manual process before the automated) and the other shows the To Be process (process after the automated)
+## One of the pictures shows the As Is process (manual process before the automated) and the other shows the To Be process (process after the automated)
 
 "C:\Users\hp\Git_Projects\Automate the assessment\Page 1.png"
 "C:\Users\hp\Git_Projects\Automate the assessment\Page 2.png"
